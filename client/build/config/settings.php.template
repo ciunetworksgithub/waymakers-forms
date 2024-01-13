@@ -1,0 +1,8 @@
+<?php
+// Make a copy of this file in the work directory so it is inaccessible to
+// the web server. Name it settings.php. Update the var values to your needs.
+// See the config/load.php file to see how it is referenced.
+define('AUTOTASK_API_ENDPOINT', 'https://webservices.autotask.net/atservicesrest/v1.0/');
+define('AUTOTASK_API_USERNAME', '__CHANGEME__');
+define('AUTOTASK_API_SECRET', '__CHANGEME__');
+define('AUTOTASK_API_INTEGRATION_CODE', '__CHANGEME__');

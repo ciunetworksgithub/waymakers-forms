@@ -1,7 +1,4 @@
-const FieldError = ({ formik, name }) => {
-  return formik.touched[name] && formik.errors[name] ? (
-    <div className="error">{formik.errors[name]}</div>
-  ) : null;
-};
+const FieldError = ({ touched, error }) =>
+  touched && error && <div className="error">{error}</div>;
 
 export default FieldError;

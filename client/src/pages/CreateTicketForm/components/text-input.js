@@ -1,17 +1,19 @@
-import FieldError from "./field-error";
+import { Field } from 'formik';
 
-const TextInput = ({ formik, name, title }) => {
+import FieldError from './field-error';
+
+const TextInput = ({ name, placeholder, title }) => {
   return (
     <label>
       {title}:
-      <input
-        type="text"
-        name={name}
-        value={formik.values[name]}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      />
-      <FieldError formik={formik} name={name} />
+      <Field name={name}>
+        {({ field, meta }) => (
+          <div>
+            <input type="text" placeholder={placeholder} {...field} />
+            <FieldError {...meta} />
+          </div>
+        )}
+      </Field>
     </label>
   );
 };

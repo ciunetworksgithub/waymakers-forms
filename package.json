@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "cd client && npm run build && cd ../ && cp -a php-server/src/ client/build",
-    "dev": "NODE_ENV=development node --watch server/app.js",
     "postinstall": "cd client && npm i",
-    "start": "NODE_ENV=production pm2 start server/app.js"
+    "start": "cd php-server && docker-compose up -d && cd ../client && npm start",
+    "stop": "cd php-server && docker-compose stop"
   },
   "keywords": [],
   "author": "",

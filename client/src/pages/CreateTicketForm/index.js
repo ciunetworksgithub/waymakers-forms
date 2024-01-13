@@ -1,60 +1,54 @@
 // client/src/components/FormWithFormik.js
 import React from 'react';
-import { useFormik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import createTicket from './helpers/create-ticket';
+import TextInput from './components/text-input';
 
-const CreateTicketForm = () => {
-  const formik = useFormik({
-    initialValues: {
-      network: '',
-      email: '',
-    },
-    validate: values => {
-      const errors = {};
+const INITIAL_VALUES = {
+  network: '',
+  email: '',
+};
 
-      if (!values.network) {
-        errors.network = 'Network is required';
-      }
+const CreateTicketForm = ({ initialValues = INITIAL_VALUES }) => {
+  const onSubmit = async values => {
+    createTicket(values);
+  };
 
-      return errors;
-    },
-    onSubmit: async values => {
-      createTicket(values);
-    },
-  });
+  const validate = values => {
+    const errors = {};
+
+    if (!values.network) {
+      errors.network = 'Network is required';
+    }
+
+    return errors;
+  };
+
+  const formikProps = {
+    initialValues,
+    onSubmit,
+    validate,
+  };
 
   return (
-    <>
-      <h1>Waymakers Customer Form</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <label>
-          Network:
-          <input
-            type="text"
+    <Formik {...formikProps}>
+      {props => (
+        <Form>
+          <h1>Waymakers Customer Form</h1>
+          <TextInput
+            title="Network"
             name="network"
-            value={formik.values.network}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            placeholder="Enter your network name"
           />
-          {formik.touched.network && formik.errors.network ? (
-            <div style={{ color: 'red' }}>{formik.errors.network}</div>
-          ) : null}
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            type="email"
+          <TextInput
+            title="Email"
             name="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            placeholder="Enter your email"
           />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    </>
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
