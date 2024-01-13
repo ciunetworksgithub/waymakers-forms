@@ -24,34 +24,37 @@ const CreateTicketForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label>
-        Network:
-        <input
-          type="text"
-          name="network"
-          value={formik.values.network}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        {formik.touched.network && formik.errors.network ? (
-          <div style={{ color: 'red' }}>{formik.errors.network}</div>
-        ) : null}
-      </label>
-      <br />
-      <label>
-        Email:
-        <input
-          type="email"
-          name="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <h1>Waymakers Customer Form</h1>
+      <form onSubmit={formik.handleSubmit}>
+        <label>
+          Network:
+          <input
+            type="text"
+            name="network"
+            value={formik.values.network}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.network && formik.errors.network ? (
+            <div style={{ color: 'red' }}>{formik.errors.network}</div>
+          ) : null}
+        </label>
+        <br />
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </label>
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 };
 
