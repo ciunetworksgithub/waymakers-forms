@@ -15,4 +15,4 @@ Now, run the server in dev mode. Cd back to root and run `docker-compose up`. Th
 It's convenient to run them both in dev at the same time so that you can make server changes that hot reload and same for client. The server just acts more or less as API gateway for the client.
 
 ## Production
-First do an `npm run build` in the client directory, then start the server with `npm start` in the root. The application should be served from the server at the `/` index route.
+First do an `npm run build` in the client directory, then commit all the changed files (especially those in the `client/build` directory), and push to `origin/main`. Then, ssh into server and do a git pull.
