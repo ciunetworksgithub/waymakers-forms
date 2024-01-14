@@ -1,10 +1,11 @@
 import './App.css';
-import CreateTicketForm from './pages/CreateTicketForm/index';
+import CreateCasePage from './pages/CreateCase/index.js';
 
 function App() {
   return (
-    <div className="App">
-      <CreateTicketForm />
+    <div className="app">
+      <div className="app-background--top fixed-top" />
+      <CreateCasePage />
     </div>
   );
 }
