@@ -12,11 +12,11 @@ const CreateCasePage = () => {
           <Row>
             <h1 className="page-title">Create a Case</h1>
           </Row>
-          <Row>
-            <Col>
+          <Row className="justify-content-md-center">
+            <Col sm lg className="mb-3">
               <CreateTicketForm />
             </Col>
-            <Col>
+            <Col sm lg>
               <h4>How to submit a Case</h4>
               <p>Please do not submit personally identifiable information.</p>
               <p>

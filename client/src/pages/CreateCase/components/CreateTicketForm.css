@@ -29,7 +29,7 @@ const CreateTicketForm = ({ initialValues = INITIAL_VALUES }) => {
   };
 
   return (
-    <div className="card m-b-10">
+    <div className="card">
       <div className="card-body">
         {error && <Alert variant="danger">{error}</Alert>}
 
