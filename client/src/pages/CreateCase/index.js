@@ -18,9 +18,13 @@ const STAGES = {
 
 const CreateCasePage = () => {
   const [curStage, setCurStage] = useState(STAGES.TILES);
+  const [formValues, setFormValues] = useState({});
   const stageXPos = `-${100 * curStage}%`;
 
-  const next = () => setCurStage(curStage + 1);
+  const next = data => {
+    setCurStage(curStage + 1);
+    setFormValues(data);
+  };
 
   return (
     <Container>
@@ -40,10 +44,13 @@ const CreateCasePage = () => {
                     <SelectionTiles onComplete={next} />
                   </Scene>
                   <Scene>
-                    <CreateTicketForm
-                      onCancel={() => setCurStage(STAGES.TILES)}
-                      onComplete={next}
-                    />
+                    {curStage === STAGES.FORM && (
+                      <CreateTicketForm
+                        initialValues={formValues}
+                        onCancel={() => setCurStage(STAGES.TILES)}
+                        onComplete={next}
+                      />
+                    )}
                   </Scene>
                   <Scene>
                     <Success />
