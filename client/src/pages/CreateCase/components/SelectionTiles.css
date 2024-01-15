@@ -3,3 +3,11 @@
   height: 100px;
   cursor: pointer;
 }
+
+.SelectionTiles .col {
+  margin-bottom: 1rem;
+}
+
+.SelectionTiles .col:last-child {
+  margin-bottom: 0;
+}
