@@ -6,6 +6,7 @@ function App() {
     <div className="app">
       <div className="app-background--top fixed-top" />
       <CreateCasePage />
+      <div className="app-background--bottom fixed-bottom" />
     </div>
   );
 }

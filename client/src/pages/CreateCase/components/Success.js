@@ -1,9 +1,11 @@
-import Container from 'react-bootstrap/esm/Container';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 
 export const Success = () => {
   return (
     <Container>
-      <div>Success</div>
+      <Card.Title>Thank you!</Card.Title>
+      <Card.Body>We'll be in touch soon.</Card.Body>
     </Container>
   );
 };

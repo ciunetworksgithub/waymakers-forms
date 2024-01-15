@@ -1,14 +1,14 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import CreateTicketForm from './components/CreateTicketForm';
 import { SelectionTiles } from './components/SelectionTiles';
+import { Scene } from './components/Scene';
 import { Success } from './components/Success';
 
 import './index.css';
-import { Scene } from './components/Scene';
 
 const STAGES = {
   TILES: 0,
@@ -20,18 +20,7 @@ const CreateCasePage = () => {
   const [curStage, setCurStage] = useState(STAGES.TILES);
   const stageXPos = `-${100 * curStage}%`;
 
-  const handleNextStage = () => {
-    switch (curStage) {
-      case STAGES.TILES:
-        setCurStage(STAGES.FORM);
-        break;
-      case STAGES.FORM:
-        setCurStage(STAGES.FINISH);
-        break;
-      default:
-        setCurStage(STAGES.TILES);
-    }
-  };
+  const next = () => setCurStage(curStage + 1);
 
   return (
     <Container>
@@ -48,13 +37,16 @@ const CreateCasePage = () => {
                   style={{ left: stageXPos }}
                 >
                   <Scene>
-                    <SelectionTiles onComplete={handleNextStage} />
+                    <SelectionTiles onComplete={next} />
                   </Scene>
                   <Scene>
-                    <CreateTicketForm onComplete={handleNextStage} />
+                    <CreateTicketForm
+                      onCancel={() => setCurStage(STAGES.TILES)}
+                      onComplete={next}
+                    />
                   </Scene>
                   <Scene>
-                    <Success onComplete={handleNextStage} />
+                    <Success />
                   </Scene>
                 </div>
               </div>

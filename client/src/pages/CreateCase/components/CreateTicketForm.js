@@ -1,5 +1,6 @@
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import { Formik } from 'formik';
 import { useState } from 'react';
@@ -7,14 +8,17 @@ import { useState } from 'react';
 import TextAreaField from '../../../components/TextAreaField';
 import TextField from '../../../components/TextField';
 import { createTicket } from '../helpers/api';
-import Container from 'react-bootstrap/esm/Container';
 
 const INITIAL_VALUES = {
   account: '',
   subject: '',
 };
 
-const CreateTicketForm = ({ initialValues = INITIAL_VALUES, onComplete }) => {
+const CreateTicketForm = ({
+  initialValues = INITIAL_VALUES,
+  onCancel,
+  onComplete,
+}) => {
   const [error, setError] = useState();
 
   const onSubmit = async values => {
@@ -62,11 +66,19 @@ const CreateTicketForm = ({ initialValues = INITIAL_VALUES, onComplete }) => {
             />
 
             <Button
+              className="me-3"
               variant="primary"
               type="submit"
               disabled={isSubmitting || isValidating}
             >
               Submit
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={onCancel}
+              disabled={isSubmitting || isValidating}
+            >
+              Cancel
             </Button>
           </Form>
         )}

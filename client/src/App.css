@@ -7,3 +7,12 @@
 .app-background--top.fixed-top {
   z-index: -1;
 }
+
+.app-background--bottom {
+  background-color: #f1831c;
+  height: 100px;
+}
+
+.app-background--bottom.fixed-bottom {
+  z-index: -1;
+}

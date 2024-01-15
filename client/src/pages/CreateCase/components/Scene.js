@@ -1,11 +1,12 @@
-import Container from 'react-bootstrap/esm/Container';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 
 export const Scene = ({ children }) => {
   return (
     <Container>
-      <div className="card m-b-10">
-        <div className="card-body">{children}</div>
-      </div>
+      <Card>
+        <Card.Body>{children}</Card.Body>
+      </Card>
     </Container>
   );
 };
