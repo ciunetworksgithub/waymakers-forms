@@ -29,7 +29,12 @@ class AutotaskApiClient
 
   public function create_ticket($ticket_attrs)
   {
-    $this->post('/Tickets', $ticket_attrs);
+    return $this->post('/Tickets', $ticket_attrs);
+  }
+
+  public function get_configuration_items($search_json)
+  {
+    return $this->request('/ConfigurationItems/query?search=' . json_encode($search_json));
   }
 
   public function post($url, $json_data)
@@ -38,10 +43,12 @@ class AutotaskApiClient
     $this->request($url, $json_data);
   }
 
-  private function request($url, $data)
+  private function request($url, $data = null)
   {
     curl_setopt($this->ch, CURLOPT_URL, self::$endpoint . $url);
-    curl_setopt($this->ch, CURLOPT_POSTFIELDS, $data);
+    if ($data) {
+      curl_setopt($this->ch, CURLOPT_POSTFIELDS, $data);
+    }
     curl_setopt($this->ch, CURLOPT_HTTPHEADER, [
       'Content-Type: application/json',
       'ApiIntegrationCode: ' . self::$integration_code,

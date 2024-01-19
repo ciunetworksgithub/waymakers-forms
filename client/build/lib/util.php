@@ -37,7 +37,19 @@ function send_error_response($error_message, $status_code = 500)
   exit;
 }
 
-function setup_api_response()
+function setup_api_get_response()
+{
+  header('Content-Type: application/json');
+
+  if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+      exit;
+    }
+    send_error_response('Invalid request method');
+  }
+}
+
+function setup_api_post_response()
 {
   header('Content-Type: application/json');
 
