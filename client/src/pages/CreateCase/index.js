@@ -34,10 +34,8 @@ const CreateCasePage = () => {
     <Container>
       <Row>
         <Col>
-          <Row>
-            <h1 className="page-title">Create a Case</h1>
-          </Row>
-          <Row className="justify-content-md-center">
+          <Row className="justify-content-md-center mt-5">
+            <Col sm md className="invisible"></Col>
             <Col sm md className="mb-3">
               <div className="CreateCasePage-viewport">
                 <div
@@ -62,20 +60,7 @@ const CreateCasePage = () => {
                 </div>
               </div>
             </Col>
-            <Col sm md>
-              {curStage !== STAGES.FINISH && (
-                <Container>
-                  <h4>How to submit a Case</h4>
-                  <p>
-                    Please do not submit personally identifiable information.
-                  </p>
-                  <p>
-                    Fill in lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </p>
-                </Container>
-              )}
-            </Col>
+            <Col sm md className="invisible"></Col>
           </Row>
         </Col>
       </Row>

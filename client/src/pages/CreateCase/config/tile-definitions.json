@@ -1,7 +1,7 @@
 [
   {
     "subject": "Audio & Visual Support",
-    "help": "",
+    "help": "Issues related to audio and visual hardware or software.",
     "fields": {
       "visible": ["contactId", "title", "description"],
       "hidden": {
