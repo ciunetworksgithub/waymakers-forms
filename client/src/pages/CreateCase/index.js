@@ -18,12 +18,16 @@ const STAGES = {
 
 const CreateCasePage = () => {
   const [curStage, setCurStage] = useState(STAGES.TILES);
-  const [formValues, setFormValues] = useState({});
+  const [ticketDef, setTicketDef] = useState();
   const stageXPos = `-${100 * curStage}%`;
 
-  const next = data => {
+  const handleTileSelection = tile => {
+    setTicketDef(tile);
+    next();
+  };
+
+  const next = () => {
     setCurStage(curStage + 1);
-    setFormValues(data);
   };
 
   return (
@@ -41,12 +45,12 @@ const CreateCasePage = () => {
                   style={{ left: stageXPos }}
                 >
                   <Scene>
-                    <SelectionTiles onComplete={next} />
+                    <SelectionTiles onComplete={handleTileSelection} />
                   </Scene>
                   <Scene>
                     {curStage === STAGES.FORM && (
                       <CreateTicketForm
-                        initialValues={formValues}
+                        ticketDef={ticketDef}
                         onCancel={() => setCurStage(STAGES.TILES)}
                         onComplete={next}
                       />

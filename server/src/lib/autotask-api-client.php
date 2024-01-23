@@ -32,9 +32,25 @@ class AutotaskApiClient
     return $this->post('/Tickets', $ticket_attrs);
   }
 
-  public function get_configuration_items($search_json)
+  public function get_configuration_items()
   {
-    return $this->request('/ConfigurationItems/query?search=' . json_encode($search_json));
+    $items = [];
+    $url = '/ConfigurationItems/query?search={"filter":[{"op":"eq","field":"isActive","value":"true"}]}';
+    do {
+      $response = json_decode($this->request($url));
+      $items = array_merge($items, $response->items);
+      $url = $response->pageDetails->nextPageUrl;
+      if ($url) {
+        $url = str_replace(self::$endpoint, "", $url);
+      }
+    } while ($url);
+    return $items;
+  }
+
+  public function get_departments()
+  {
+    $url = '/Departments/query?search={"filter":[]}';
+    return json_decode($this->request($url))->items;
   }
 
   public function post($url, $json_data)

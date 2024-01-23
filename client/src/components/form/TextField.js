@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 
-const TextField = ({
+export const TextField = ({
   errors,
   handleChange,
   label,
@@ -14,13 +14,13 @@ const TextField = ({
     <Form.Group className="mb-3" controlId={name}>
       <Form.Label>{label}</Form.Label>
       <Form.Control
+        isInvalid={!!errors[name]}
         isValid={touched[name] && !errors[name]}
         onChange={handleChange}
         placeholder={placeholder}
         required={required}
         type="text"
         value={values[name]}
-        isInvalid={!!errors[name]}
       />
       <Form.Control.Feedback type="invalid">
         {errors[name]}
@@ -28,5 +28,3 @@ const TextField = ({
     </Form.Group>
   );
 };
-
-export default TextField;

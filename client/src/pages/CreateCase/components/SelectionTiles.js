@@ -7,21 +7,19 @@ import tileDefs from '../config/tile-definitions.json';
 
 import './SelectionTiles.css';
 
-const Tile = ({ onClick, children }) => {
-  return (
-    <Card onClick={onClick} className="SelectionTiles-Tile">
-      <Card.Body>{children}</Card.Body>
-    </Card>
-  );
-};
-
 export const SelectionTiles = ({ onComplete }) => {
   return (
     <Container className="SelectionTiles h-100">
       <Row>
         {tileDefs.map((tileDef, idx) => (
           <Col key={idx}>
-            <Tile key={idx} onClick={() => onComplete(tileDef)}>{tileDef.subject}</Tile>
+            <Card
+              onClick={() => onComplete(tileDef)}
+              className="SelectionTiles-Tile"
+            >
+              <Card.Title className="title">{tileDef.subject}</Card.Title>
+              <Card.Body>{tileDef.help}</Card.Body>
+            </Card>
           </Col>
         ))}
       </Row>

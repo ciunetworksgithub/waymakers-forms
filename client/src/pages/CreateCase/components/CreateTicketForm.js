@@ -5,20 +5,17 @@ import Form from 'react-bootstrap/Form';
 import { Formik } from 'formik';
 import { useState } from 'react';
 
-import TextAreaField from '../../../components/TextAreaField';
-import TextField from '../../../components/TextField';
 import { createTicket } from '../helpers/api';
+import { FormField } from '../../../components/form';
 
-const INITIAL_VALUES = {
-  account: '',
-  subject: '',
-};
+import fieldDefs from '../config/field-definitions.json';
 
-const CreateTicketForm = ({
-  initialValues = INITIAL_VALUES,
-  onCancel,
-  onComplete,
-}) => {
+const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
+  const {
+    subject,
+    fields: { hidden: initialValues, visible: fieldNames },
+  } = ticketDef;
+  const fields = fieldNames.map(name => ({ name, ...fieldDefs[name] }));
   const [error, setError] = useState();
 
   const onSubmit = async values => {
@@ -35,36 +32,17 @@ const CreateTicketForm = ({
   };
 
   return (
-    <Container>
+    <Container className="CreateTicketForm">
       {error && <Alert variant="danger">{error}</Alert>}
+
+      <h3 className="title">{subject}</h3>
 
       <Formik {...formikProps}>
         {({ handleSubmit, isValidating, isSubmitting, ...formikBag }) => (
           <Form onSubmit={handleSubmit}>
-            <TextField
-              name="account"
-              label="Account"
-              placeholder="Select your account"
-              required
-              {...formikBag}
-            />
-
-            <TextField
-              name="subject"
-              label="Subject"
-              placeholder="How can we help?"
-              required
-              {...formikBag}
-            />
-
-            <TextAreaField
-              name="description"
-              label="Description"
-              placeholder="Tell us a little about the issue"
-              required
-              {...formikBag}
-            />
-
+            {fields.map((fieldDef, idx) => (
+              <FormField key={idx} {...fieldDef} {...formikBag} />
+            ))}
             <Button
               className="me-3"
               variant="primary"

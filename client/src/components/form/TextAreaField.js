@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 
-const TextAreaField = ({
+export const TextAreaField = ({
   errors,
   handleChange,
   label,
@@ -15,6 +15,7 @@ const TextAreaField = ({
       <Form.Label>{label}</Form.Label>
       <Form.Control
         as="textarea"
+        isInvalid={!!errors[name]}
         isValid={touched[name] && !errors[name]}
         onChange={handleChange}
         placeholder={placeholder}
@@ -26,5 +27,3 @@ const TextAreaField = ({
     </Form.Group>
   );
 };
-
-export default TextAreaField;
