@@ -1,14 +1,5 @@
 [
   {
-    "label": "Contact",
-    "name": "contactId",
-    "type": "select",
-    "values": {
-      "UniFi Application": 30684933,
-      "UniFi Controller": 30684602
-    }
-  },
-  {
     "label": "Title",
     "name": "title",
     "type": "text"
@@ -21,7 +12,7 @@
   {
     "name": "companyID",
     "type": "hidden",
-    "value": "<need value>"
+    "value": "179"
   },
   {
     "name": "id",
@@ -36,7 +27,7 @@
   {
     "name": "queueID",
     "type": "hidden",
-    "value": "<need value>"
+    "value": 5
   },
   {
     "name": "status",
@@ -46,11 +37,11 @@
   {
     "name": "ticketCategory",
     "type": "hidden",
-    "value": 150
+    "value": 113
   },
   {
     "name": "ticketType",
     "type": "hidden",
-    "value": 0
+    "value": 1
   }
 ]

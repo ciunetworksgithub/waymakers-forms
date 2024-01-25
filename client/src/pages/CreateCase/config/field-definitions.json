@@ -25,6 +25,10 @@
     "label": "Company ID",
     "type": "number"
   },
+  "dueDateTime": {
+    "label": "Due Date",
+    "type": "string"
+  },
   "id": {
     "label": "ID",
     "type": "number"

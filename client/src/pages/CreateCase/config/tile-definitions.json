@@ -3,15 +3,19 @@
     "subject": "Audio & Visual Support",
     "help": "Issues related to audio and visual hardware or software.",
     "fields": {
-      "visible": ["contactId", "title", "description"],
+      "visible": [
+        "title",
+        "description"
+      ],
       "hidden": {
-        "companyID": 0,
+        "companyID": 179,
+        "dueDateTime": 1,
         "id": 0,
         "priority": 2,
-        "queueID": 123,
+        "queueID": 5,
         "status": 1,
-        "ticketCategory": 150,
-        "ticketType": 0
+        "ticketCategory": 3,
+        "ticketType": 1
       }
     }
   }

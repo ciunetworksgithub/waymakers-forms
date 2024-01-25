@@ -53,10 +53,16 @@ class AutotaskApiClient
     return json_decode($this->request($url))->items;
   }
 
+  public function get_ticket_fields()
+  {
+    $url = '/Tickets/entityinformation/fields';
+    return $this->request($url);
+  }
+
   public function post($url, $json_data)
   {
     curl_setopt($this->ch, CURLOPT_POST, 1);
-    $this->request($url, $json_data);
+    return $this->request($url, $json_data);
   }
 
   private function request($url, $data = null)
@@ -75,8 +81,10 @@ class AutotaskApiClient
     $response = curl_exec($this->ch);
     $status_code = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
     if ($status_code >= 300) {
-      $error = curl_error($this->ch);
-      throw new Exception($error || $response, $status_code);
+      if (!$response) {
+        $response = curl_error($this->ch);
+      }
+      throw new Exception($response, $status_code);
     }
 
     return $response;

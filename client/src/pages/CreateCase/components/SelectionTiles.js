@@ -3,9 +3,9 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
-import tileDefs from '../config/tile-definitions.json';
-
 import './SelectionTiles.css';
+
+import tileDefs from '../config/tile-definitions.json';
 
 export const SelectionTiles = ({ onComplete }) => {
   return (

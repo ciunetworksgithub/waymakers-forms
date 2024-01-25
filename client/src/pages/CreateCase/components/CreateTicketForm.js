@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 
 import { createTicket } from '../helpers/api';
+import { replaceDueDateTime } from '../helpers/replace-due-date-time';
 import { FormField } from '../../../components/form';
 
 import fieldDefs from '../config/field-definitions.json';
@@ -21,13 +22,18 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   const onSubmit = async values => {
     const response = await createTicket(values);
     if (response.status === 'error') {
-      setError(response.message);
+      try {
+        setError(JSON.parse(response.message).errors.join(' '));
+      } catch (e) {
+        setError('Encountered an error. Please contact support.');
+      }
+    } else {
+      onComplete(response);
     }
-    onComplete();
   };
 
   const formikProps = {
-    initialValues,
+    initialValues: replaceDueDateTime(initialValues),
     onSubmit,
   };
 
