@@ -10,10 +10,11 @@ import tileDefs from '../config/tile-definitions.json';
 export const SelectionTiles = ({ onComplete }) => {
   return (
     <Container className="SelectionTiles h-100">
-      <Row>
+      <Row xs={1} md={2} className="g-4">
         {tileDefs.map((tileDef, idx) => (
           <Col key={idx}>
             <Card
+              key={idx}
               onClick={() => onComplete(tileDef)}
               className="SelectionTiles-Tile"
             >

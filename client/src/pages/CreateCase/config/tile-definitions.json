@@ -18,5 +18,25 @@
         "ticketType": 1
       }
     }
+  },
+  {
+    "subject": "Hardware Problems",
+    "help": "Printer not working? Monitor flickering? PC or laptop not booting or something else?",
+    "fields": {
+      "visible": [
+        "title",
+        "description"
+      ],
+      "hidden": {
+        "companyID": 179,
+        "dueDateTime": 1,
+        "id": 0,
+        "priority": 2,
+        "queueID": 5,
+        "status": 1,
+        "ticketCategory": 3,
+        "ticketType": 1
+      }
+    }
   }
 ]

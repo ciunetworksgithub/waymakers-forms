@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { isDev } from '../../../helpers/util';
+import { isDev } from '../../../lib/util';
 
 const API_URL = `${isDev ? 'http://localhost:9000' : ''}/create-ticket.php`;
 const headers = {

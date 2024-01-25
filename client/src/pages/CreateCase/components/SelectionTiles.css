@@ -12,11 +12,3 @@
   text-align: center;
   word-wrap: break-word;
 }
-
-.SelectionTiles .col {
-  margin-bottom: 1rem;
-}
-
-.SelectionTiles .col:last-child {
-  margin-bottom: 0;
-}
