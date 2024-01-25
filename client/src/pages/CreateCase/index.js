@@ -42,7 +42,7 @@ const CreateCasePage = () => {
         <Col>
           <Row className="justify-content-md-center mt-5">
             <Col sm={0} md={0} className="invisible"></Col>
-            <Col xs={12} sm={10} md={10} lg={10} xl={6} className="mb-3">
+            <Col xs={12} sm={10} md={10} lg={10} xl={7} className="mb-3">
               <div className="CreateCasePage-viewport">
                 <div
                   className="CreateCasePage-viewport-stage"
