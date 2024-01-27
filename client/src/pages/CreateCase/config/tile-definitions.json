@@ -1,8 +1,8 @@
 [
   {
-    "subject": "Audio & Visual Support",
-    "help": "Issues related to audio and visual hardware or software.",
-    "fields": {
+    "tileTitle": "Audio & Visual Support",
+    "tileBody": "Issues related to audio and visual hardware or software.",
+    "formFields": {
       "visible": [
         "companyID",
         "title",
@@ -18,9 +18,9 @@
     }
   },
   {
-    "subject": "Hardware Problems",
-    "help": "Printer not working? Monitor flickering? PC or laptop not booting or something else?",
-    "fields": {
+    "tileTitle": "Hardware Problems",
+    "tileBody": "Printer not working? Monitor flickering? PC or laptop not booting or something else?",
+    "formFields": {
       "visible": [
         "companyID",
         "title",

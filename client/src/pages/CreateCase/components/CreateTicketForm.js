@@ -14,7 +14,7 @@ import fieldDefs from '../config/field-definitions.json';
 const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   const {
     subject,
-    fields: { hidden: initialValues, visible: fieldNames },
+    formFields: { hidden: initialValues, visible: fieldNames },
   } = ticketDef;
   const fields = fieldNames.map(name => ({ name, ...fieldDefs[name] }));
   const [error, setError] = useState();

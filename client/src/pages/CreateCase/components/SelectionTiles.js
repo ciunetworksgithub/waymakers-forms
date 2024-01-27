@@ -18,8 +18,8 @@ export const SelectionTiles = ({ onComplete }) => {
               onClick={() => onComplete(tileDef)}
               className="SelectionTiles-Tile"
             >
-              <Card.Title className="title">{tileDef.subject}</Card.Title>
-              <Card.Body>{tileDef.help}</Card.Body>
+              <Card.Title className="title">{tileDef.tileTitle}</Card.Title>
+              <Card.Body>{tileDef.tileBody}</Card.Body>
             </Card>
           </Col>
         ))}
