@@ -59,6 +59,12 @@ class AutotaskApiClient
     return $this->request($url);
   }
 
+  public function get_user_defined_fields()
+  {
+    $url = '/UserDefinedFieldDefinitions/query?search={"filter":[]}';
+    return $this->request($url);
+  }
+
   public function post($url, $json_data)
   {
     curl_setopt($this->ch, CURLOPT_POST, 1);
