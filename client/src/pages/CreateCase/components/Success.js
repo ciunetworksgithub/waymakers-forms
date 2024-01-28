@@ -10,7 +10,7 @@ export const Success = ({ ticketId }) => {
       <Card.Body>
         <p>We'll be in touch soon.</p>
         <p>
-          Your ticket ID is: <span className="Success-TicketId">{ticketId}</span>.
+          Your ticket number is: <span className="Success-TicketId">{ticketId}</span>.
         </p>
       </Card.Body>
     </Container>
