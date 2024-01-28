@@ -5,8 +5,11 @@ import Form from 'react-bootstrap/Form';
 import { Formik } from 'formik';
 import { useState } from 'react';
 
-import { createTicket } from '../helpers/api';
-import { replaceDueDateTime } from '../helpers/replace-due-date-time';
+import {
+  createTicket,
+  replaceDueDateTime,
+  transformUserDefinedFields,
+} from '../helpers';
 import { FormField } from '../../../components/form';
 
 import fieldDefs from '../config/field-definitions.json';
@@ -20,7 +23,7 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   const [error, setError] = useState();
 
   const onSubmit = async values => {
-    const response = await createTicket(values);
+    const response = await createTicket(transformUserDefinedFields(values));
     if (response.status === 'error') {
       try {
         setError(JSON.parse(response.message).errors.join(' '));

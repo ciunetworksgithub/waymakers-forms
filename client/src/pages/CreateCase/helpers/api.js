@@ -16,4 +16,3 @@ export const createTicket = async attrs => {
     return out;
   }
 };
-
