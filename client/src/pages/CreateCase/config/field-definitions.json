@@ -1,4 +1,25 @@
 {
+  "contactEmail": {
+    "label": "Contact Email",
+    "placeholder": "Enter your email address",
+    "required": true,
+    "type": "email",
+    "dtoTransform": "append_to_description"
+  },
+  "contactName": {
+    "label": "Contact Name",
+    "placeholder": "Tell us your name",
+    "required": true,
+    "type": "text",
+    "dtoTransform": "append_to_description"
+  },
+  "contactPhone": {
+    "label": "Contact Phone",
+    "placeholder": "What is a good number to reach you at?",
+    "required": true,
+    "type": "text",
+    "dtoTransform": "append_to_description"
+  },
   "companyID": {
     "label": "Company",
     "placeholder": "Select company",
@@ -16,7 +37,6 @@
       "Waymakers (YOW - Corporate)": 421,
       "Waymakers - Central Justice Center": 615,
       "Waymakers - Harbor Justice Center": 614,
-      "Waymakers - Holding": 498,
       "Waymakers - Lamoreaux Justice Center": 618,
       "Waymakers - Manchester Office Building": 619,
       "Waymakers - North Justice Center": 616,
@@ -36,7 +56,7 @@
     "placeholder": "What is your device hostname?",
     "required": true,
     "type": "text",
-    "udfName": "Device Hostname(s)"
+    "dtoTransform": "append_to_description"
   },
   "title": {
     "label": "Title",

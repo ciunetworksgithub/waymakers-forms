@@ -5,11 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { Formik } from 'formik';
 import { useState } from 'react';
 
-import {
-  createTicket,
-  replaceDueDateTime,
-  transformUserDefinedFields,
-} from '../helpers';
+import { createTicket, replaceDueDateTime, toDTO } from '../helpers';
 import { FormField } from '../../../components/form';
 
 import fieldDefs from '../config/field-definitions.json';
@@ -23,7 +19,7 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   const [error, setError] = useState();
 
   const onSubmit = async values => {
-    const response = await createTicket(transformUserDefinedFields(values));
+    const response = await createTicket(toDTO(values));
     if (response.status === 'error') {
       try {
         setError(JSON.parse(response.message).errors.join(' '));
@@ -35,9 +31,28 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
     }
   };
 
+  const validate = values => {
+    const errors = {};
+
+    if (fieldNames.includes('companyID') && !values.companyID) {
+      errors.companyID = 'Required';
+    }
+
+    if (
+      fieldNames.includes('contactEmail') &&
+      !!values.contactEmail &&
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.contactEmail)
+    ) {
+      errors.contactEmail = 'Invalid email address';
+    }
+
+    return errors;
+  };
+
   const formikProps = {
     initialValues: replaceDueDateTime(initialValues),
     onSubmit,
+    validate,
   };
 
   return (

@@ -24,6 +24,7 @@ const CreateCasePage = () => {
 
   const handleCreateTicketSuccess = ({ itemId }) => {
     setTicketId(itemId);
+    window.scrollTo(window.scrollX, 0);
     next();
   };
 

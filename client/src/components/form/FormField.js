@@ -1,4 +1,4 @@
-import { SelectField, TextAreaField, TextField } from './';
+import { EmailField, SelectField, TextAreaField, TextField } from './';
 
 export const FormField = ({
   label,
@@ -9,6 +9,16 @@ export const FormField = ({
   ...formikBag
 }) => {
   switch (type) {
+    case 'email':
+      return (
+        <EmailField
+          name={name}
+          label={label}
+          placeholder={placeholder}
+          required={required}
+          {...formikBag}
+        />
+      );
     case 'select':
       return (
         <SelectField
