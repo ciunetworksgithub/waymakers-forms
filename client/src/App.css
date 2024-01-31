@@ -9,7 +9,7 @@
 }
 
 .app-background--bottom {
-  background-color: #f1831c;
+  background-color: var(--color-wm-orange);
   height: 100px;
 }
 

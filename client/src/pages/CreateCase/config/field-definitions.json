@@ -21,7 +21,7 @@
     "dtoTransform": "append_to_description"
   },
   "companyID": {
-    "label": "Company",
+    "label": "Site/Program",
     "placeholder": "Select company",
     "options": {
       "Waymakers (CCFSP)": 423,
@@ -52,8 +52,9 @@
     "type": "textarea"
   },
   "deviceName": {
+    "helpComponent": "DeviceNameHowTo",
     "label": "Device Name",
-    "placeholder": "What is your device hostname?",
+    "placeholder": "Don't know it? Click help icon above.",
     "required": true,
     "type": "text",
     "dtoTransform": "append_to_description"

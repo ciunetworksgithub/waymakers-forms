@@ -1,7 +1,8 @@
 :root {
   --color-error: red;
   --color-label: #626d7a;
-  --color-title: #0d6efd;
+  --color-title: #11adc4;
+  --color-wm-orange: #f1831c;
 }
 body {
   margin: 0;
@@ -37,3 +38,15 @@ form label {
 .title {
   color: var(--color-title);
 }
+
+.btn-primary {
+  --bs-btn-bg: var(--color-title);
+  --bs-btn-border-color: var(--color-title);
+  --bs-btn-hover-bg: #13a0b5;
+  --bs-btn-hover-border-color: #13a0b5;
+  --bs-btn-active-bg: #178fa1;
+  --bs-btn-active-border-color: #178fa1;
+  --bs-btn-disabled-bg: #178fa1;
+  --bs-btn-disabled-border-color: #178fa1;
+}
+

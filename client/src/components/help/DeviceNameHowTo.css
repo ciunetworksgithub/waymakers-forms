@@ -1,0 +1,9 @@
+.DeviceNameHowTo {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+  width: 500px;
+  left: -180%;
+}
+
+.DeviceNameHowTo img {
+  width: 100%;
+}

@@ -1740,6 +1740,15 @@
           "isSystem": true
         },
         {
+          "value": "460",
+          "label": "Strety - CRM",
+          "isDefaultValue": false,
+          "sortOrder": 460,
+          "parentValue": "",
+          "isActive": true,
+          "isSystem": true
+        },
+        {
           "value": "462",
           "label": "Salesbuildr - Quoting & Procurement",
           "isDefaultValue": false,
@@ -2079,6 +2088,15 @@
           "sortOrder": 595,
           "parentValue": "",
           "isActive": true,
+          "isSystem": true
+        },
+        {
+          "value": "601",
+          "label": "C3 Systems & Security - ",
+          "isDefaultValue": false,
+          "sortOrder": 601,
+          "parentValue": "",
+          "isActive": false,
           "isSystem": true
         },
         {
@@ -3089,6 +3107,15 @@
         {
           "value": "47",
           "label": "Security",
+          "isDefaultValue": false,
+          "sortOrder": 0,
+          "parentValue": "",
+          "isActive": true,
+          "isSystem": false
+        },
+        {
+          "value": "48",
+          "label": "Waymakers",
           "isDefaultValue": false,
           "sortOrder": 0,
           "parentValue": "",
@@ -4357,6 +4384,15 @@
           "label": "N-Able Alert",
           "isDefaultValue": false,
           "sortOrder": 13,
+          "parentValue": "",
+          "isActive": true,
+          "isSystem": true
+        },
+        {
+          "value": "16",
+          "label": "Waymakers Form",
+          "isDefaultValue": false,
+          "sortOrder": 14,
           "parentValue": "",
           "isActive": true,
           "isSystem": true
@@ -8584,6 +8620,33 @@
           "parentValue": "14",
           "isActive": true,
           "isSystem": false
+        },
+        {
+          "value": "543",
+          "label": "Mobile Device",
+          "isDefaultValue": false,
+          "sortOrder": 0,
+          "parentValue": "48",
+          "isActive": true,
+          "isSystem": false
+        },
+        {
+          "value": "544",
+          "label": "Mileage Portal",
+          "isDefaultValue": false,
+          "sortOrder": 0,
+          "parentValue": "48",
+          "isActive": true,
+          "isSystem": false
+        },
+        {
+          "value": "545",
+          "label": "Employee Portal",
+          "isDefaultValue": false,
+          "sortOrder": 0,
+          "parentValue": "48",
+          "isActive": true,
+          "isSystem": false
         }
       ],
       "picklistParentValueField": "IssueType",
@@ -9079,7 +9142,7 @@
         },
         {
           "value": "153",
-          "label": "Waymakers - Move Datto Device",
+          "label": "Waymakers - Mobile Device",
           "isDefaultValue": false,
           "sortOrder": 55,
           "parentValue": "",

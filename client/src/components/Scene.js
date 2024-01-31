@@ -1,9 +1,9 @@
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 
-export const Scene = ({ children }) => {
+export const Scene = ({ className, children }) => {
   return (
-    <Container>
+    <Container className={className}>
       <Card>
         <Card.Body>{children}</Card.Body>
       </Card>

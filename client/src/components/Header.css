@@ -1,0 +1,7 @@
+.Header {
+  color: var(--color-wm-orange);
+  font-family: cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

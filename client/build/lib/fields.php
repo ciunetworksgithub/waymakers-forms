@@ -1,4 +1,3 @@
-#!/usr/local/bin/php
 <?php
 include_once("lib/autotask-api-client.php");
 include_once("lib/util.php");

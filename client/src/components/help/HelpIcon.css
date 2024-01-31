@@ -1,0 +1,11 @@
+.HelpIcon-tooltip.tooltip {
+  --bs-tooltip-bg: #fff;
+}
+
+.HelpIcon-trigger {
+  color: var(--bs-tertiary-color);
+  font-size: large;
+  cursor: pointer;
+  float: right;
+  clear: both;
+}

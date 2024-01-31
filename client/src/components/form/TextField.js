@@ -1,8 +1,11 @@
 import Form from 'react-bootstrap/Form';
 
+import { HelpIcon } from '../help';
+
 export const TextField = ({
   errors,
   handleChange,
+  helpComponent,
   label,
   name,
   placeholder,
@@ -13,6 +16,7 @@ export const TextField = ({
   return (
     <Form.Group className="mb-3" controlId={name}>
       <Form.Label>{label}</Form.Label>
+      {helpComponent && <HelpIcon componentName={helpComponent} />}
       <Form.Control
         isInvalid={!!errors[name]}
         isValid={touched[name] && !errors[name]}

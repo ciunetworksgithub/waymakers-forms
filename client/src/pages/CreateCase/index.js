@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import CreateTicketForm from './components/CreateTicketForm';
 import { SelectionTiles } from './components/SelectionTiles';
-import { Scene } from './components/Scene';
+import { Scene } from '../../components';
 import { Success } from './components/Success';
 
 import './index.css';
@@ -41,7 +41,7 @@ const CreateCasePage = () => {
     <Container>
       <Row>
         <Col>
-          <Row className="justify-content-md-center mt-5">
+          <Row className="justify-content-md-center">
             <Col sm={0} md={0} className="invisible"></Col>
             <Col xs={12} sm={10} md={10} lg={10} xl={7} className="mb-3">
               <div className="CreateCasePage-viewport">
