@@ -54,7 +54,7 @@
   "deviceName": {
     "helpComponent": "DeviceNameHowTo",
     "label": "Device Name",
-    "placeholder": "Don't know it? Click help icon above.",
+    "placeholder": "Don't know it? Click that help icon right there.",
     "required": true,
     "type": "text",
     "dtoTransform": "append_to_description"
@@ -79,6 +79,10 @@
   },
   "queueID": {
     "label": "Queue ID",
+    "type": "number"
+  },
+  "source": {
+    "label": "Source",
     "type": "number"
   },
   "status": {

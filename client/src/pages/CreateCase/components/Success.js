@@ -3,14 +3,14 @@ import Container from 'react-bootstrap/Container';
 
 import './Success.css';
 
-export const Success = ({ ticketId }) => {
+export const Success = ({ ticketNumber }) => {
   return (
     <Container className="Success">
       <Card.Title>Thank you!</Card.Title>
       <Card.Body>
         <p>We'll be in touch soon.</p>
         <p>
-          Your ticket number is: <span className="Success-TicketId">{ticketId}</span>.
+          Your ticket number is: <span className="Success-TicketNumber">{ticketNumber}</span>
         </p>
       </Card.Body>
     </Container>

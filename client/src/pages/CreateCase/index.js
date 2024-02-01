@@ -9,6 +9,7 @@ import { Scene } from '../../components';
 import { Success } from './components/Success';
 
 import './index.css';
+import { getTicket } from './helpers';
 
 const STAGES = {
   TILES: 0,
@@ -19,11 +20,12 @@ const STAGES = {
 const CreateCasePage = () => {
   const [curStage, setCurStage] = useState(STAGES.TILES);
   const [ticketDef, setTicketDef] = useState();
-  const [ticketId, setTicketId] = useState();
+  const [ticketNumber, setTicketNumber] = useState();
   const stageXPos = `-${100 * curStage}%`;
 
-  const handleCreateTicketSuccess = ({ itemId }) => {
-    setTicketId(itemId);
+  const handleCreateTicketSuccess = async ({ itemId, ...rest }) => {
+    const { ticketNumber } = await getTicket(itemId);
+    setTicketNumber(ticketNumber);
     window.scrollTo(window.scrollX, 0);
     next();
   };
@@ -62,7 +64,7 @@ const CreateCasePage = () => {
                     )}
                   </Scene>
                   <Scene>
-                    <Success ticketId={ticketId} />
+                    <Success ticketNumber={ticketNumber} />
                   </Scene>
                 </div>
               </div>

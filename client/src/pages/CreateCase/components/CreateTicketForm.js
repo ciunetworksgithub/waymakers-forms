@@ -13,9 +13,13 @@ import fieldDefs from '../config/field-definitions.json';
 const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   const {
     subject,
-    formFields: { hidden: initialValues, visible: fieldNames },
+    formFields: { hidden, visible: fieldNames },
   } = ticketDef;
   const fields = fieldNames.map(name => ({ name, ...fieldDefs[name] }));
+  const initialValues = {
+    ...fieldNames.reduce((acc, cur) => ({ [cur]: '', ...acc }), {}),
+    ...hidden,
+  };
   const [error, setError] = useState();
 
   const onSubmit = async values => {

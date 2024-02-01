@@ -53,6 +53,12 @@ class AutotaskApiClient
     return json_decode($this->request($url))->items;
   }
 
+  public function get_ticket($id)
+  {
+    $url = '/Tickets/' . $id;
+    return $this->request($url);
+  }
+
   public function get_ticket_fields()
   {
     $url = '/Tickets/entityinformation/fields';
