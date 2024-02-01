@@ -22,7 +22,7 @@
   },
   "companyID": {
     "label": "Site/Program",
-    "placeholder": "Select company",
+    "placeholder": "Make a selection",
     "options": {
       "Waymakers (CCFSP)": 423,
       "Waymakers (Corporate)": 399,
