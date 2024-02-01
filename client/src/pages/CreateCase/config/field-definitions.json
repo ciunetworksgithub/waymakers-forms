@@ -47,7 +47,7 @@
   },
   "description": {
     "label": "Description",
-    "placeholder": "Tell us a little about the issue",
+    "placeholder": "Tell us a little about the issue and when you are available to help us fix",
     "required": true,
     "type": "textarea"
   },
