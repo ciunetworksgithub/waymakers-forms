@@ -53,9 +53,9 @@ const CreateCasePage = () => {
                   className="CreateCasePage-viewport-stage"
                   style={{ left: stageXPos }}
                 >
-                  <Scene className={getActiveClassName(STAGES.TILES)}>
+                  <Container className={getActiveClassName(STAGES.TILES)}>
                     <SelectionTiles onComplete={handleTileSelection} />
-                  </Scene>
+                  </Container>
                   <Scene className={getActiveClassName(STAGES.FORM)}>
                     {curStage === STAGES.FORM && (
                       <CreateTicketForm
