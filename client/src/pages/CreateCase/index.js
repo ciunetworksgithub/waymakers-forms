@@ -23,7 +23,9 @@ const CreateCasePage = () => {
   const [ticketNumber, setTicketNumber] = useState();
   const stageXPos = `-${100 * curStage}%`;
 
-  const handleCreateTicketSuccess = async ({ itemId, ...rest }) => {
+  const getActiveClassName = stage => curStage === stage ? 'active' : 'inactive';
+
+  const handleCreateTicketSuccess = async ({ itemId }) => {
     const { ticketNumber } = await getTicket(itemId);
     setTicketNumber(ticketNumber);
     next();
@@ -51,10 +53,10 @@ const CreateCasePage = () => {
                   className="CreateCasePage-viewport-stage"
                   style={{ left: stageXPos }}
                 >
-                  <Scene>
+                  <Scene className={getActiveClassName(STAGES.TILES)}>
                     <SelectionTiles onComplete={handleTileSelection} />
                   </Scene>
-                  <Scene>
+                  <Scene className={getActiveClassName(STAGES.FORM)}>
                     {curStage === STAGES.FORM && (
                       <CreateTicketForm
                         ticketDef={ticketDef}
@@ -63,7 +65,7 @@ const CreateCasePage = () => {
                       />
                     )}
                   </Scene>
-                  <Scene>
+                  <Scene className={getActiveClassName(STAGES.FINISH)}>
                     <Success ticketNumber={ticketNumber} />
                   </Scene>
                 </div>
