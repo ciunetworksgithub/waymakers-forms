@@ -26,7 +26,6 @@ const CreateCasePage = () => {
   const handleCreateTicketSuccess = async ({ itemId, ...rest }) => {
     const { ticketNumber } = await getTicket(itemId);
     setTicketNumber(ticketNumber);
-    window.scrollTo(window.scrollX, 0);
     next();
   };
 
@@ -37,6 +36,7 @@ const CreateCasePage = () => {
 
   const next = () => {
     setCurStage(curStage + 1);
+    window.scroll({ top: 0, behavior: 'instant' });
   };
 
   return (
