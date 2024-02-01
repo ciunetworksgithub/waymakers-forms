@@ -23,6 +23,7 @@ export const HelpIcon = ({ componentName }) => {
       trigger="click"
       placement="top"
       overlay={renderTooltip}
+      rootClose={true}
     >
       <i className="bi bi-question-circle HelpIcon-trigger"></i>
     </OverlayTrigger>
