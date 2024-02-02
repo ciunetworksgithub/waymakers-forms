@@ -5,12 +5,12 @@ export const toDTO = (data = {}) =>
     const [fieldName, value] = cur;
     const { dtoTransform, label } = fieldDefs[fieldName];
     switch (dtoTransform) {
-      case 'append_to_description':
+      case 'appendToDescription':
         acc.description = acc.description || data.description || '';
         acc.description += `\n\n${label}: ${value}`;
         break;
       default:
-        acc[fieldName] = value;
+        acc[fieldName] = acc[fieldName] || value;
     }
     return acc;
   }, {});

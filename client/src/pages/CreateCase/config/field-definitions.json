@@ -4,21 +4,21 @@
     "placeholder": "Enter your email address",
     "required": true,
     "type": "email",
-    "dtoTransform": "append_to_description"
+    "dtoTransform": "appendToDescription"
   },
   "contactName": {
     "label": "Contact Name",
     "placeholder": "Tell us your name",
     "required": true,
     "type": "text",
-    "dtoTransform": "append_to_description"
+    "dtoTransform": "appendToDescription"
   },
   "contactPhone": {
     "label": "Contact Phone",
     "placeholder": "What is a good number to reach you at?",
     "required": true,
     "type": "text",
-    "dtoTransform": "append_to_description"
+    "dtoTransform": "appendToDescription"
   },
   "companyID": {
     "label": "Site/Program",
@@ -57,7 +57,7 @@
     "placeholder": "Don't know it? Click that help icon right there.",
     "required": true,
     "type": "text",
-    "dtoTransform": "append_to_description"
+    "dtoTransform": "appendToDescription"
   },
   "title": {
     "label": "Title",
