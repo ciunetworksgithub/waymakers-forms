@@ -1,6 +1,9 @@
 .HelpIcon-tooltip.tooltip {
   --bs-tooltip-bg: #fff;
+}
 
+.HelpIcon-tooltip.tooltip.show {
+  opacity: 1;
 }
 
 .HelpIcon-tooltip.tooltip .tooltip-inner {
