@@ -32,7 +32,7 @@
       "Waymakers (PATH)": 424,
       "Waymakers (TAY)": 461,
       "Waymakers (Tustin Youth Shelter)": 407,
-      "Waymakers (VAP 208)": 494,
+      "Waymakers (VAP Team Training)": 494,
       "Waymakers (VAP)": 425,
       "Waymakers (YOW - Corporate)": 421,
       "Waymakers - Central Justice Center": 615,
@@ -57,6 +57,12 @@
     "placeholder": "Don't know it? Click that help icon right there.",
     "required": true,
     "type": "text",
+    "dtoTransform": "appendToDescription"
+  },
+  "supervisorEmail": {
+    "label": "Supervisor Email (Optional)",
+    "placeholder": "Enter email address of your supervisor",
+    "type": "email",
     "dtoTransform": "appendToDescription"
   },
   "title": {

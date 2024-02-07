@@ -1,11 +1,11 @@
 .DeviceNameHowTo {
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
-  width: 500px;
-  left: -180%;
+  width: 50em;
+  left: -280%;
 
   @media (max-width: 576px) {
-    width: 380px;
-    left: -100%;
+    width: 25em;
+    left: -85%;
   }
 }
 
