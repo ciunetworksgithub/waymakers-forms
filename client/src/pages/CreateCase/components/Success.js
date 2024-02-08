@@ -9,9 +9,12 @@ export const Success = ({ ticketNumber }) => {
       <Card.Title>Thank you!</Card.Title>
       <Card.Body>
         <p>We'll be in touch soon.</p>
-        <p>
-          Your ticket number is: <span className="Success-TicketNumber">{ticketNumber}</span>
-        </p>
+        {ticketNumber && (
+          <p>
+            Your ticket number is:{' '}
+            <span className="Success-TicketNumber">{ticketNumber}</span>
+          </p>
+        )}
       </Card.Body>
     </Container>
   );

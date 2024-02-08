@@ -9,10 +9,8 @@ const api = axios.create({ baseURL: BASE_URL, headers });
 
 export const createTicket = async attrs => {
   try {
-    console.log(`[JMG] attrs`, attrs);
-    // const { data } = await api.post(`/create-ticket.php`, attrs);
-    // return data;
-    return {};
+    const { data } = await api.post(`/create-ticket.php`, attrs);
+    return data;
   } catch (error) {
     const out = error.response ? error.response.data : error.message;
     console.error('API Error > createTicket:', out);
