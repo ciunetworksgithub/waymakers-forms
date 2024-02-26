@@ -47,6 +47,13 @@ class AutotaskApiClient
     return $items;
   }
 
+  public function get_contacts($company_id)
+  {
+    $filter = '{"filter":[{"op":"eq","field":"companyID","value":"'. $company_id .'"}]}';
+    $url = '/Contacts/query?search=' . $filter;
+    return json_encode(json_decode($this->request($url))->items);
+  }
+
   public function get_departments()
   {
     $url = '/Departments/query?search={"filter":[]}';
