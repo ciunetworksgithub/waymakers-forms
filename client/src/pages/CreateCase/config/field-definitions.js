@@ -1,20 +1,29 @@
+import * as Yup from 'yup';
+
 import { getContacts } from "../helpers";
 
 const config = {
+  attachments: {
+    label: 'Attachments',
+    placeholder: 'Upload screenshots or other files',
+    type: 'upload',
+  },
   contactID: {
     label: 'Contact Email',
-    placeholder: 'Select your email address',
+    placeholder: 'Start typing...',
     emptyPlaceholder: 'Select email after selecting Site/Program',
     options: {},
     optionsApi: getContacts,
     listensTo: 'companyID',
     required: true,
-    type: 'select',
+    schema: Yup.string().required('Required'),
+    type: 'autosuggest',
   },
   contactName: {
     label: 'Contact Name',
     placeholder: 'Tell us your name',
     required: true,
+    schema: Yup.string().required('Required'),
     type: 'text',
     dtoTransform: 'appendToDescription',
   },
@@ -22,6 +31,7 @@ const config = {
     label: 'Contact Phone',
     placeholder: 'What is a good number to reach you at?',
     required: true,
+    schema: Yup.string().required('Required'),
     type: 'text',
     dtoTransform: 'appendToDescription',
   },
@@ -48,6 +58,7 @@ const config = {
       'Waymakers - West Justice Center': 617,
     },
     required: true,
+    schema: Yup.string().required('Required'),
     type: 'select',
   },
   description: {
@@ -55,6 +66,7 @@ const config = {
     placeholder:
       'Tell us a little about the issue and when you are available to help us fix',
     required: true,
+    schema: Yup.string().required('Required'),
     type: 'textarea',
   },
   deviceName: {
@@ -62,6 +74,7 @@ const config = {
     label: 'Device Name',
     placeholder: "Don't know it? Click that help icon right there.",
     required: true,
+    schema: Yup.string().required('Required'),
     type: 'text',
     dtoTransform: 'appendToDescription',
   },
@@ -75,6 +88,7 @@ const config = {
     label: 'Title',
     placeholder: 'How can we help?',
     required: true,
+    schema: Yup.string().required('Required'),
     type: 'text',
   },
   dueDateTime: {

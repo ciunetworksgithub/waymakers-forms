@@ -9,7 +9,8 @@
         "title",
         "description",
         "supervisorEmail",
-        "deviceName"
+        "deviceName",
+        "attachments"
       ],
       "hidden": {
         "dueDateTime": 1,

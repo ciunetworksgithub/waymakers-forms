@@ -2,6 +2,7 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useState } from 'react';
 
@@ -22,7 +23,7 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   };
   const [error, setError] = useState();
 
-  const onSubmit = async values => {
+  const onSubmit = async (values, ...rest) => {
     const response = await createTicket(toDTO(values));
     if (response.status === 'error') {
       try {
@@ -35,28 +36,18 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
     }
   };
 
-  const validate = values => {
-    const errors = {};
-
-    if (fieldNames.includes('companyID') && !values.companyID) {
-      errors.companyID = 'Required';
-    }
-
-    if (
-      fieldNames.includes('contactEmail') &&
-      !!values.contactEmail &&
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.contactEmail)
-    ) {
-      errors.contactEmail = 'Invalid email address';
-    }
-
-    return errors;
-  };
+  const validationSchema = Yup.object().shape(
+    fields.reduce(
+      (acc, { name, schema }) => (schema ? { [name]: schema, ...acc } : acc),
+      {}
+    )
+  );
 
   const formikProps = {
     initialValues: replaceDueDateTime(initialValues),
     onSubmit,
-    validate,
+    validationSchema,
+    validateOnChange: false,
   };
 
   return (
@@ -67,7 +58,7 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
 
       <Formik {...formikProps}>
         {({ handleSubmit, isValidating, isSubmitting, ...formikBag }) => (
-          <Form onSubmit={handleSubmit}>
+          <Form noValidate onSubmit={handleSubmit}>
             {fields.map((fieldDef, idx) => (
               <FormField key={idx} {...fieldDef} {...formikBag} />
             ))}

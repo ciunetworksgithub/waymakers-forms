@@ -1,6 +1,9 @@
 import Form from 'react-bootstrap/Form';
 
-export const TextAreaField = ({
+import { useDependentField } from './hooks/use-dependent-field';
+
+export const DependentSelectField = ({
+  emptyPlaceholder,
   errors,
   handleChange,
   label,
@@ -9,21 +12,28 @@ export const TextAreaField = ({
   required,
   touched,
   values,
+  ...rest
 }) => {
+  const { isEmpty, isLoading, options } = useDependentField({ values, ...rest });
+
   return (
     <Form.Group className="mb-3" controlId={name}>
       <Form.Label>{label}</Form.Label>
-      <Form.Control
-        as="textarea"
+      <Form.Select
         isInvalid={!!errors[name]}
         isValid={touched[name] && !errors[name]}
         onChange={handleChange}
-        placeholder={placeholder}
         required={required}
-        rows={3}
-        type="text"
         value={values[name]}
-      />
+        disabled={isLoading || isEmpty}
+      >
+        <option>{isEmpty ? emptyPlaceholder : placeholder}</option>
+        {Object.entries(options).map(([label, value], idx) => (
+          <option key={idx} value={value}>
+            {label}
+          </option>
+        ))}
+      </Form.Select>
       <Form.Control.Feedback type="invalid">
         {errors[name]}
       </Form.Control.Feedback>

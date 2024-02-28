@@ -1,0 +1,22 @@
+.react-autosuggest__suggestions-list {
+  background-color: var(--bs-white);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.react-autosuggest__suggestion {
+  padding: .25em 1em;
+}
+
+.react-autosuggest__suggestion:hover,
+.react-autosuggest__suggestion--highlighted {
+  background-color: var(--bs-secondary-bg-subtle);
+  cursor: pointer;
+}
