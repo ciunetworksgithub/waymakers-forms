@@ -18,6 +18,19 @@ export const createTicket = async attrs => {
   }
 };
 
+export const getContacts = async companyId => {
+  try {
+    const { data } = await api.get(`/get-contacts.php?company_id=${companyId}`);
+    return data
+      ? data.reduce((acc, cur) => ({ [cur.emailAddress]: cur.id, ...acc }), {})
+      : {};
+  } catch (error) {
+    const out = error.response ? error.response.data : error.message;
+    console.error('API Error > getContacts:', out);
+    return out;
+  }
+};
+
 export const getTicket = async id => {
   try {
     const { data } = await api.get(`/get-ticket.php?id=${id}`);

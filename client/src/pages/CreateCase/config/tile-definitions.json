@@ -5,12 +5,10 @@
     "formFields": {
       "visible": [
         "companyID",
+        "contactID",
         "title",
         "description",
-        "contactName",
-        "contactEmail",
         "supervisorEmail",
-        "contactPhone",
         "deviceName"
       ],
       "hidden": {
@@ -29,12 +27,10 @@
     "formFields": {
       "visible": [
         "companyID",
+        "contactID",
         "title",
         "description",
-        "contactName",
-        "contactEmail",
         "supervisorEmail",
-        "contactPhone",
         "deviceName"
       ],
       "hidden": {
@@ -53,10 +49,9 @@
     "formFields": {
       "visible": [
         "companyID",
+        "contactID",
         "title",
         "description",
-        "contactName",
-        "contactEmail",
         "supervisorEmail",
         "contactPhone"
       ],
@@ -76,12 +71,10 @@
     "formFields": {
       "visible": [
         "companyID",
+        "contactID",
         "title",
         "description",
-        "contactName",
-        "contactEmail",
         "supervisorEmail",
-        "contactPhone",
         "deviceName"
       ],
       "hidden": {
@@ -100,10 +93,9 @@
     "formFields": {
       "visible": [
         "companyID",
+        "contactID",
         "title",
         "description",
-        "contactName",
-        "contactEmail",
         "supervisorEmail",
         "contactPhone"
       ],
@@ -123,12 +115,10 @@
     "formFields": {
       "visible": [
         "companyID",
+        "contactID",
         "title",
         "description",
-        "contactName",
-        "contactEmail",
         "supervisorEmail",
-        "contactPhone",
         "deviceName"
       ],
       "hidden": {

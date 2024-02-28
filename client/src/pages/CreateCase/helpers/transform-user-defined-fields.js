@@ -1,4 +1,4 @@
-import fieldDefs from '../config/field-definitions.json';
+import fieldDefs from '../config/field-definitions.js';
 
 export const transformUserDefinedFields = (fields = {}) => {
   const userDefinedFields = [];

@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { createTicket, replaceDueDateTime, toDTO } from '../helpers';
 import { FormField } from '../../../components/form';
 
-import fieldDefs from '../config/field-definitions.json';
+import fieldDefs from '../config/field-definitions.js';
 
 const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   const {
