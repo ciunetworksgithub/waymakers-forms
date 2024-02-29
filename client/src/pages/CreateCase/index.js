@@ -10,6 +10,7 @@ import { Success } from './components/Success';
 
 import './index.css';
 import { getTicket } from './helpers';
+import { AttachmentsModal } from './components/AttachmentsModal';
 
 const STAGES = {
   TILES: 0,
@@ -19,16 +20,30 @@ const STAGES = {
 
 const CreateCasePage = () => {
   const [curStage, setCurStage] = useState(STAGES.TILES);
+  const [attachments, setAttachments] = useState();
   const [ticketDef, setTicketDef] = useState();
-  const [ticketNumber, setTicketNumber] = useState();
+  const [ticket, setTicket] = useState();
   const stageXPos = `-${100 * curStage}%`;
 
-  const getActiveClassName = stage => curStage === stage ? 'active' : 'inactive';
+  const getActiveClassName = stage =>
+    curStage === stage ? 'active' : 'inactive';
 
-  const handleCreateTicketSuccess = async ({ itemId }) => {
-    const { ticketNumber } = await getTicket(itemId);
-    setTicketNumber(ticketNumber);
+  const handleAttachmentsUploadComplete = () => {
+    setAttachments(false);
     next();
+  };
+
+  const handleCreateTicketSuccess = async ({
+    attachments: _attachments,
+    itemId,
+  }) => {
+    const data = await getTicket(itemId);
+    setTicket(data);
+    if (_attachments) {
+      setAttachments(_attachments);
+    } else {
+      next();
+    }
   };
 
   const handleTileSelection = tile => {
@@ -64,9 +79,15 @@ const CreateCasePage = () => {
                         onComplete={handleCreateTicketSuccess}
                       />
                     )}
+                    <AttachmentsModal
+                      attachments={attachments}
+                      ticket={ticket}
+                      onComplete={handleAttachmentsUploadComplete}
+                      show={!!attachments}
+                    />
                   </Scene>
                   <Scene className={getActiveClassName(STAGES.FINISH)}>
-                    <Success ticketNumber={ticketNumber} />
+                    <Success ticketNumber={ticket?.ticketNumber} />
                   </Scene>
                 </div>
               </div>

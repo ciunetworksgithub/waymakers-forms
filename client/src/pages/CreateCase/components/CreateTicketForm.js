@@ -24,6 +24,7 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   const [error, setError] = useState();
 
   const onSubmit = async (values, ...rest) => {
+    return onComplete({ attachments: values['attachments'], itemId: 133125 });
     const response = await createTicket(toDTO(values));
     if (response.status === 'error') {
       try {
@@ -32,7 +33,7 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
         setError('Encountered an error. Please contact support.');
       }
     } else {
-      onComplete(response);
+      onComplete({ attachments: values['attachments'], ...response });
     }
   };
 
