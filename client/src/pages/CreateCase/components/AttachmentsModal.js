@@ -2,24 +2,29 @@ import Alert from 'react-bootstrap/Alert';
 import Badge from 'react-bootstrap/Badge';
 import Modal from 'react-bootstrap/Modal';
 import { useEffect, useState } from 'react';
+import { createAttachment } from '../helpers';
+import Button from 'react-bootstrap/esm/Button';
 
 const getStatusButtonVariant = status => {
   switch (status) {
-    case 'Uploading':
-      return 'warning';
     case 'Done':
       return 'success';
-    default:
+    case 'Error':
       return 'danger';
+    case 'Uploading':
+      return 'warning';
+    default:
+      return 'primary';
   }
 };
 
 const UploadStatus = ({ attachment }) => {
   const { name, status } = attachment;
+  const variant = getStatusButtonVariant(status);
   return (
     <p>
-      <Badge style={{ width: 80 }} bg={getStatusButtonVariant(status)}>
-        {status || 'Pending'}
+      <Badge style={{ width: 80 }} bg={variant}>
+        {status}
       </Badge>{' '}
       {name}
     </p>
@@ -28,47 +33,58 @@ const UploadStatus = ({ attachment }) => {
 
 export const AttachmentsModal = ({
   attachments,
-  onComplete = () => true,
+  show,
   ticket,
-  ...props
+  onComplete = () => true,
 }) => {
-  const [uploads, setUploads] = useState();
+  const [isDone, setIsDone] = useState(false);
+  const [uploads, setUploads] = useState(
+    attachments.reduce(
+      (acc, cur) => ({
+        [cur.name]: {
+          contactId: ticket.contactID,
+          status: 'Pending',
+          ticketId: ticket.id,
+          ...cur,
+        },
+        ...acc,
+      }),
+      {}
+    )
+  );
 
   useEffect(() => {
-    if (!attachments) return;
-
-    if (!uploads) {
-      setUploads(
-        attachments?.reduce((acc, cur) => ({ [cur.name]: cur, ...acc }), {})
-      );
-      return;
-    }
-
     const values = Object.values(uploads);
-    if (values.every(({ status }) => !status)) {
-      values.forEach((attachment, idx) => {
-        if (!attachment.status) {
-          attachment.status = 'Uploading';
-          setTimeout(() => {
-            uploads[attachment.name].status = 'Done';
+
+    if (values.every(({ status }) => status === 'Pending')) {
+      (async () => {
+        for (const attachment of values) {
+          try {
+            attachment.status = 'Uploading';
             setUploads({ ...uploads });
-          }, 2000 * (idx + 1));
+            await createAttachment(attachment);
+            attachment.status = 'Done';
+            setUploads({ ...uploads });
+          } catch (e) {
+            attachment.status = 'Error';
+            attachment.name = e.message;
+          }
         }
-      });
+      })();
       setUploads({ ...uploads });
     }
 
-    if (values.every(({ status }) => status === 'Done')) {
-      return onComplete();
+    if (values.every(({ status }) => status === 'Done' || status === 'Error')) {
+      setIsDone(true);
     }
-  }, [attachments, onComplete, uploads]);
+  }, [uploads]);
 
   return (
     <Modal
-      {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      show
     >
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
@@ -76,16 +92,24 @@ export const AttachmentsModal = ({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <h6>Attachments:</h6> */}
-        <Alert variant="warning">
-          Wait until all the attachments are finished uploading before closing
-          this browser tab.
-        </Alert>
+        {!isDone && (
+          <Alert variant="warning">
+            Wait until all the attachments are finished uploading before closing
+            this browser tab.
+          </Alert>
+        )}
         {uploads &&
           Object.values(uploads).map((attachment, idx) => (
             <UploadStatus attachment={attachment} key={idx} />
           ))}
       </Modal.Body>
+      {isDone && (
+        <Modal.Footer>
+          <Button onClick={onComplete} variant="primary">
+            Close
+          </Button>
+        </Modal.Footer>
+      )}
     </Modal>
   );
 };

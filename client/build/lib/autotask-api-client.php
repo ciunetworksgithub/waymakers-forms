@@ -27,9 +27,15 @@ class AutotaskApiClient
     curl_close($this->ch);
   }
 
-  public function create_ticket($ticket_attrs)
+  public function create_attachment($ticket_id, $attrs)
   {
-    return $this->post('/Tickets', $ticket_attrs);
+    $url = '/Tickets/' . $ticket_id . '/Attachments';
+    return $this->post($url, $attrs);
+  }
+
+  public function create_ticket($attrs)
+  {
+    return $this->post('/Tickets', $attrs);
   }
 
   public function get_configuration_items()

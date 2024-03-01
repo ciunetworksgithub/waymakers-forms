@@ -21,6 +21,7 @@ const STAGES = {
 const CreateCasePage = () => {
   const [curStage, setCurStage] = useState(STAGES.TILES);
   const [attachments, setAttachments] = useState();
+  const [showAttachmentsModal, setShowAttachmentsModal] = useState(false);
   const [ticketDef, setTicketDef] = useState();
   const [ticket, setTicket] = useState();
   const stageXPos = `-${100 * curStage}%`;
@@ -29,7 +30,7 @@ const CreateCasePage = () => {
     curStage === stage ? 'active' : 'inactive';
 
   const handleAttachmentsUploadComplete = () => {
-    setAttachments(false);
+    setShowAttachmentsModal(false);
     next();
   };
 
@@ -41,6 +42,7 @@ const CreateCasePage = () => {
     setTicket(data);
     if (_attachments) {
       setAttachments(_attachments);
+      setShowAttachmentsModal(true);
     } else {
       next();
     }
@@ -79,12 +81,14 @@ const CreateCasePage = () => {
                         onComplete={handleCreateTicketSuccess}
                       />
                     )}
-                    <AttachmentsModal
-                      attachments={attachments}
-                      ticket={ticket}
-                      onComplete={handleAttachmentsUploadComplete}
-                      show={!!attachments}
-                    />
+                    {showAttachmentsModal && (
+                      <AttachmentsModal
+                        attachments={attachments}
+                        show={showAttachmentsModal}
+                        ticket={ticket}
+                        onComplete={handleAttachmentsUploadComplete}
+                      />
+                    )}
                   </Scene>
                   <Scene className={getActiveClassName(STAGES.FINISH)}>
                     <Success ticketNumber={ticket?.ticketNumber} />

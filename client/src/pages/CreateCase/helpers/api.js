@@ -7,6 +7,37 @@ const headers = {
 };
 const api = axios.create({ baseURL: BASE_URL, headers });
 
+export const createAttachment = async ({
+  contactId: attachedByContactID,
+  data: fileData,
+  name: title,
+  size: fileSize,
+  ticketId: ticketID,
+  type: contentType,
+}) => {
+  try {
+    const { data } = await api.post(
+      `/create-attachment.php?ticket_id=${ticketID}`,
+      {
+        attachedByContactID,
+        attachmentType: 'FILE_ATTACHMENT',
+        contentType,
+        fileSize,
+        fullPath: title,
+        publish: 1,
+        ticketID,
+        title,
+        data: fileData,
+      }
+    );
+    return data;
+  } catch (error) {
+    const out = error.response ? error.response.data : error.message;
+    console.error('API Error > createTicket:', out);
+    throw out;
+  }
+};
+
 export const createTicket = async attrs => {
   try {
     const { data } = await api.post(`/create-ticket.php`, attrs);

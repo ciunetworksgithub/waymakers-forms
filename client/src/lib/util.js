@@ -10,12 +10,12 @@ export const readFiles = fileList => {
 
 export const readFile = file =>
   new Promise((resolve, reject) => {
-    const { name, size } = file;
+    const { name, size, type } = file;
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
       const data = reader.result.split(',')[1];
-      resolve({ data, name, size });
+      resolve({ data, name, size, type });
     };
     reader.onerror = function (error) {
       reject(`Error reading a file: ${error}`);
