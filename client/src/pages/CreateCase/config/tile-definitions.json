@@ -1,7 +1,7 @@
 [
   {
     "tileTitle": "Software & Application Issues",
-    "tileBody": "Issues related to applications or software.",
+    "tileBody": "Issues related to Applications or Software such as Adobe, Teams, Excel, Word, Accufund etc.",
     "formFields": {
       "visible": [
         "companyID",

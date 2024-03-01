@@ -7,10 +7,8 @@ export const UploadsField = ({
   name,
   required,
   setFieldError,
-  setFieldTouched,
   setFieldValue,
   touched,
-  values,
 }) => {
   const handleChange = async e => {
     const files = e.target?.files;
