@@ -3,7 +3,6 @@ import Badge from 'react-bootstrap/Badge';
 import Modal from 'react-bootstrap/Modal';
 import { useEffect, useState } from 'react';
 import { createAttachment } from '../helpers';
-import Button from 'react-bootstrap/esm/Button';
 
 const getStatusButtonVariant = status => {
   switch (status) {
@@ -33,7 +32,6 @@ const UploadStatus = ({ attachment }) => {
 
 export const AttachmentsModal = ({
   attachments,
-  show,
   ticket,
   onComplete = () => true,
 }) => {
@@ -79,6 +77,10 @@ export const AttachmentsModal = ({
     }
   }, [uploads]);
 
+  if (isDone) {
+    onComplete();
+  }
+
   return (
     <Modal
       size="lg"
@@ -103,13 +105,6 @@ export const AttachmentsModal = ({
             <UploadStatus attachment={attachment} key={idx} />
           ))}
       </Modal.Body>
-      {isDone && (
-        <Modal.Footer>
-          <Button onClick={onComplete} variant="primary">
-            Close
-          </Button>
-        </Modal.Footer>
-      )}
     </Modal>
   );
 };

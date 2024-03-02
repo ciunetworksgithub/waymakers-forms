@@ -1,0 +1,74 @@
+{
+  "attachments": {
+    "label": "Attachments",
+    "placeholder": "Upload screenshots or other files",
+    "type": "upload"
+  },
+  "contactID": {
+    "label": "Contact Email",
+    "placeholder": "Start typing...",
+    "required": true,
+    "type": "autosuggest"
+  },
+  "contactName": {
+    "label": "Contact Name",
+    "placeholder": "Tell us your name",
+    "appendToDescription": true
+  },
+  "contactPhone": {
+    "label": "Contact Phone",
+    "placeholder": "What is a good number to reach you at?",
+    "appendToDescription": true
+  },
+  "companyID": {
+    "label": "Site/Program",
+    "placeholder": "Make a selection",
+    "required": true,
+    "type": "select",
+    "options": {
+      "Waymakers (CCFSP)": 423,
+      "Waymakers (Corporate)": 399,
+      "Waymakers (Guidance Center - YOW_CCSFP)": 411,
+      "Waymakers (Huntington Beach Youth Shelter)": 405,
+      "Waymakers (Laguna Beach Children Crisis Residential Program)": 404,
+      "Waymakers (PATH)": 424,
+      "Waymakers (TAY)": 461,
+      "Waymakers (Tustin Youth Shelter)": 407,
+      "Waymakers (VAP Team Training)": 494,
+      "Waymakers (VAP)": 425,
+      "Waymakers (YOW - Corporate)": 421,
+      "Waymakers - Central Justice Center": 615,
+      "Waymakers - Harbor Justice Center": 614,
+      "Waymakers - Lamoreaux Justice Center": 618,
+      "Waymakers - Manchester Office Building": 619,
+      "Waymakers - North Justice Center": 616,
+      "Waymakers - West Justice Center": 617
+    }
+  },
+  "description": {
+    "label": "Description",
+    "placeholder": "Tell us a little about the issue and when you are available to help us fix",
+    "required": true,
+    "type": "textarea"
+  },
+  "deviceName": {
+    "helpComponent": "DeviceNameHowTo",
+    "label": "Device Name",
+    "placeholder": "Don't know it? Click that help icon right there.",
+    "required": true,
+    "type": "text",
+    "appendToDescription": true
+  },
+  "supervisorEmail": {
+    "label": "Supervisor Email (Optional)",
+    "placeholder": "Enter email address of your supervisor",
+    "type": "email",
+    "appendToDescription": true
+  },
+  "title": {
+    "label": "Title",
+    "placeholder": "How can we help?",
+    "required": true,
+    "type": "text"
+  }
+}

@@ -27,6 +27,17 @@ function handle_api_exception($e)
   send_error_response($error, $code);
 }
 
+function is_dev()
+{
+  if (!$_SERVER['HTTP_HOST']) {
+    return true;
+  }
+  if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
+    return true;
+  }
+  return false;
+}
+
 function send_error_response($error_message, $status_code = 500)
 {
   http_response_code($status_code);

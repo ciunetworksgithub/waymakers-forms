@@ -9,22 +9,27 @@ import { useState } from 'react';
 import { createTicket, replaceDueDateTime, toDTO } from '../helpers';
 import { FormField } from '../../../components/form';
 
-import fieldDefs from '../config/field-definitions.js';
-
-const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
+export const CreateTicketForm = ({ formDef, onCancel, onComplete }) => {
   const {
-    subject,
-    formFields: { hidden, visible: fieldNames },
-  } = ticketDef;
-  const fields = fieldNames.map(name => ({ name, ...fieldDefs[name] }));
+    tile: { title: subject },
+    fields: { hidden, visible: visibileFields },
+  } = formDef;
   const initialValues = {
-    ...fieldNames.reduce((acc, cur) => ({ [cur]: '', ...acc }), {}),
+    ...visibileFields.reduce((acc, cur) => ({ [cur]: '', ...acc }), {}),
     ...hidden,
   };
   const [error, setError] = useState();
 
-  const onSubmit = async (values) => {
-    const response = await createTicket(toDTO(values));
+  const onSubmit = async values => {
+    const response = await createTicket(
+      toDTO({
+        data: values,
+        fieldDefs: visibileFields.reduce(
+          (acc, cur) => ({ [cur.name]: cur, ...acc }),
+          {}
+        ),
+      })
+    );
     if (response.status === 'error') {
       try {
         setError(JSON.parse(response.message).errors.join(' '));
@@ -37,7 +42,7 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
   };
 
   const validationSchema = Yup.object().shape(
-    fields.reduce(
+    visibileFields.reduce(
       (acc, { name, schema }) => (schema ? { [name]: schema, ...acc } : acc),
       {}
     )
@@ -59,7 +64,7 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
       <Formik {...formikProps}>
         {({ handleSubmit, isValidating, isSubmitting, ...formikBag }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            {fields.map((fieldDef, idx) => (
+            {visibileFields.map((fieldDef, idx) => (
               <FormField key={idx} {...fieldDef} {...formikBag} />
             ))}
             <Button
@@ -83,5 +88,3 @@ const CreateTicketForm = ({ ticketDef, onCancel, onComplete }) => {
     </Container>
   );
 };
-
-export default CreateTicketForm;

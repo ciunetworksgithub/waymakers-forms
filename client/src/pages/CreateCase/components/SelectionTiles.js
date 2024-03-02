@@ -5,21 +5,19 @@ import Row from 'react-bootstrap/Row';
 
 import './SelectionTiles.css';
 
-import tileDefs from '../config/tile-definitions.json';
-
-export const SelectionTiles = ({ onComplete }) => {
+export const SelectionTiles = ({ forms, onComplete }) => {
   return (
     <Container className="SelectionTiles h-100">
       <Row xs={1} md={2} className="g-4">
-        {tileDefs.map((tileDef, idx) => (
+        {forms.map((form, idx) => (
           <Col key={idx}>
             <Card
               key={idx}
-              onClick={() => onComplete(tileDef)}
+              onClick={() => onComplete(form)}
               className="SelectionTiles-Tile"
             >
-              <Card.Title className="title">{tileDef.tileTitle}</Card.Title>
-              <Card.Body>{tileDef.tileBody}</Card.Body>
+              <Card.Title className="title">{form.tile.title}</Card.Title>
+              <Card.Body>{form.tile.body}</Card.Body>
             </Card>
           </Col>
         ))}

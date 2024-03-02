@@ -49,6 +49,28 @@ export const createTicket = async attrs => {
   }
 };
 
+export const getFieldsConfig = async () => {
+  try {
+    const { data } = await api.get(`/get-config.php?type=fields`);
+    return data;
+  } catch (error) {
+    const out = error.response ? error.response.data : error.message;
+    console.error('API Error > getFieldsConfig:', out);
+    return out;
+  }
+};
+
+export const getFormsConfig = async () => {
+  try {
+    const { data } = await api.get(`/get-config.php?type=forms`);
+    return data;
+  } catch (error) {
+    const out = error.response ? error.response.data : error.message;
+    console.error('API Error > getFormsConfig:', out);
+    return out;
+  }
+};
+
 export const getContacts = async companyId => {
   try {
     const { data } = await api.get(`/get-contacts.php?company_id=${companyId}`);

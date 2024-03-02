@@ -1,11 +1,20 @@
 [
   {
-    "tileTitle": "Software & Application Issues",
-    "tileBody": "Issues related to Applications or Software such as Adobe, Teams, Excel, Word, Accufund etc.",
-    "formFields": {
+    "tile": {
+      "title": "Software & Application Issues",
+      "body": "Issues related to Applications or Software such as Adobe, Teams, Excel, Word, Accufund etc."
+    },
+    "fields": {
       "visible": [
-        "companyID",
-        "contactID",
+        {
+          "name": "companyID",
+          "label": "Site/Program",
+          "placeholder": "Make a selection"
+        },
+        {
+          "name": "contactID",
+          "placeholder": "Start typing..."
+        },
         "title",
         "description",
         "supervisorEmail",
@@ -23,9 +32,11 @@
     }
   },
   {
-    "tileTitle": "Hardware Problems",
-    "tileBody": "Printer not working? Monitor flickering? PC or laptop not booting or something else?",
-    "formFields": {
+    "tile": {
+      "title": "Hardware Problems",
+      "body": "Printer not working? Monitor flickering? PC or laptop not booting or something else?"
+    },
+    "fields": {
       "visible": [
         "companyID",
         "contactID",
@@ -45,9 +56,11 @@
     }
   },
   {
-    "tileTitle": "VoIP Phone Issues",
-    "tileBody": "Having issues making or receiving calls, dropped calls or poor quality?",
-    "formFields": {
+    "tile": {
+      "title": "VoIP Phone Issues",
+      "body": "Having issues making or receiving calls, dropped calls or poor quality?"
+    },
+    "fields": {
       "visible": [
         "companyID",
         "contactID",
@@ -67,9 +80,11 @@
     }
   },
   {
-    "tileTitle": "Password Issues or Reset",
-    "tileBody": "Request access or password resets for a program or application (Email, 2FA, Accufund, Portals etc.)",
-    "formFields": {
+    "tile": {
+      "title": "Password Issues or Reset",
+      "body": "Request access or password resets for a program or application (Email, 2FA, Accufund, Portals etc.)"
+    },
+    "fields": {
       "visible": [
         "companyID",
         "contactID",
@@ -89,9 +104,11 @@
     }
   },
   {
-    "tileTitle": "Mobile Device Issues",
-    "tileBody": "Issues related to your mobile phone or device ",
-    "formFields": {
+    "tile": {
+      "title": "Mobile Device Issues",
+      "body": "Issues related to your mobile phone or device "
+    },
+    "fields": {
       "visible": [
         "companyID",
         "contactID",
@@ -111,9 +128,11 @@
     }
   },
   {
-    "tileTitle": "Access Support",
-    "tileBody": "Request access to a program or application",
-    "formFields": {
+    "tile": {
+      "title": "Access Support",
+      "body": "Request access to a program or application"
+    },
+    "fields": {
       "visible": [
         "companyID",
         "contactID",

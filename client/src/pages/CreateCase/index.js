@@ -1,16 +1,20 @@
+import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 
-import CreateTicketForm from './components/CreateTicketForm';
-import { SelectionTiles } from './components/SelectionTiles';
+import {
+  AttachmentsModal,
+  CreateTicketForm,
+  SelectionTiles,
+  Success,
+} from './components';
 import { Scene } from '../../components';
-import { Success } from './components/Success';
+import { getTicket } from './helpers';
+import { useFormDefs } from './hooks/use-form-defs';
 
 import './index.css';
-import { getTicket } from './helpers';
-import { AttachmentsModal } from './components/AttachmentsModal';
 
 const STAGES = {
   TILES: 0,
@@ -19,10 +23,11 @@ const STAGES = {
 };
 
 const CreateCasePage = () => {
+  const { config, error } = useFormDefs();
   const [curStage, setCurStage] = useState(STAGES.TILES);
   const [attachments, setAttachments] = useState();
   const [showAttachmentsModal, setShowAttachmentsModal] = useState(false);
-  const [ticketDef, setTicketDef] = useState();
+  const [formDef, setFormDef] = useState();
   const [ticket, setTicket] = useState();
   const stageXPos = `-${100 * curStage}%`;
 
@@ -48,8 +53,8 @@ const CreateCasePage = () => {
     }
   };
 
-  const handleTileSelection = tile => {
-    setTicketDef(tile);
+  const handleTileSelection = selection => {
+    setFormDef(selection);
     next();
   };
 
@@ -57,6 +62,25 @@ const CreateCasePage = () => {
     setCurStage(curStage + 1);
     window.scroll({ top: 0, behavior: 'instant' });
   };
+
+  if (error) {
+    return (
+      <Container>
+        <Scene>
+          <h2>Uh oh!</h2>
+          <p>We hit a snag. Try refreshing your browser?</p>
+          <Alert variant="danger">
+            <p>{error.message}</p>
+            <p>{error.stack}</p>
+          </Alert>
+        </Scene>
+      </Container>
+    );
+  }
+
+  if (!config) {
+    return null;
+  }
 
   return (
     <Container>
@@ -71,12 +95,15 @@ const CreateCasePage = () => {
                   style={{ left: stageXPos }}
                 >
                   <Container className={getActiveClassName(STAGES.TILES)}>
-                    <SelectionTiles onComplete={handleTileSelection} />
+                    <SelectionTiles
+                      forms={config}
+                      onComplete={handleTileSelection}
+                    />
                   </Container>
                   <Scene className={getActiveClassName(STAGES.FORM)}>
                     {curStage === STAGES.FORM && (
                       <CreateTicketForm
-                        ticketDef={ticketDef}
+                        formDef={formDef}
                         onCancel={() => setCurStage(STAGES.TILES)}
                         onComplete={handleCreateTicketSuccess}
                       />
