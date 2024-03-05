@@ -5,10 +5,14 @@ class Cache
   private $file_path;
   private $ttl = 86_400; // one day
 
-  public function __construct($key)
+  public function __construct($key, $ttl = null)
   {
     if (!file_exists('cache')) mkdir('cache', 0744);
     $this->file_path = './cache/' . $key . '.json';
+
+    if ($ttl) {
+      $this->ttl = $ttl;
+    }
   }
 
   public function get()
