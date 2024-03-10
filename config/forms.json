@@ -15,7 +15,6 @@
           "name": "contactID",
           "placeholder": "Start typing..."
         },
-        "title",
         "description",
         "supervisorEmail",
         "deviceName",
@@ -27,7 +26,8 @@
         "queueID": 29682833,
         "source": 16,
         "status": 1,
-        "ticketCategory": 141
+        "ticketCategory": 141,
+        "title": "Application"
       }
     }
   },
@@ -40,7 +40,6 @@
       "visible": [
         "companyID",
         "contactID",
-        "title",
         "description",
         "supervisorEmail",
         "deviceName",
@@ -52,7 +51,8 @@
         "queueID": 29682833,
         "source": 16,
         "status": 1,
-        "ticketCategory": 146
+        "ticketCategory": 146,
+        "title": "Hardware"
       }
     }
   },
@@ -65,10 +65,13 @@
       "visible": [
         "companyID",
         "contactID",
-        "title",
         "description",
         "supervisorEmail",
-        "contactPhone",
+        {
+          "name": "contactPhone",
+          "label": "VoIP Extension",
+          "placeholder": "What is your VoIP phone extension?"
+        },
         "attachments"
       ],
       "hidden": {
@@ -77,7 +80,8 @@
         "queueID": 29682833,
         "source": 16,
         "status": 1,
-        "ticketCategory": 138
+        "ticketCategory": 138,
+        "title": "VOIP"
       }
     }
   },
@@ -90,7 +94,6 @@
       "visible": [
         "companyID",
         "contactID",
-        "title",
         "description",
         "supervisorEmail",
         "deviceName",
@@ -102,23 +105,27 @@
         "queueID": 29682833,
         "source": 16,
         "status": 1,
-        "ticketCategory": 135
+        "ticketCategory": 135,
+        "title": "Password Reset"
       }
     }
   },
   {
     "tile": {
-      "title": "Mobile Device Issues",
+      "title": "Mobile Phone Issues",
       "body": "Issues related to your mobile phone or device "
     },
     "fields": {
       "visible": [
         "companyID",
         "contactID",
-        "title",
         "description",
         "supervisorEmail",
-        "contactPhone",
+        {
+          "name": "contactPhone",
+          "label": "Mobile Number",
+          "placeholder": "What is your mobile phone number?"
+        },
         "attachments"
       ],
       "hidden": {
@@ -127,7 +134,8 @@
         "queueID": 29683494,
         "source": 16,
         "status": 1,
-        "ticketCategory": 153
+        "ticketCategory": 153,
+        "title": "Waymakers - Mobile Device"
       }
     }
   },
@@ -140,7 +148,6 @@
       "visible": [
         "companyID",
         "contactID",
-        "title",
         "description",
         "supervisorEmail",
         "deviceName",
@@ -152,7 +159,8 @@
         "queueID": 29682969,
         "source": 16,
         "status": 1,
-        "ticketCategory": 152
+        "ticketCategory": 152,
+        "title": "Security"
       }
     }
   }

@@ -19,8 +19,10 @@ export const CreateTicketForm = ({ formDef, onCancel, onComplete }) => {
     ...hidden,
   };
   const [error, setError] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async values => {
+    setIsLoading(true);
     const response = await createTicket(
       toDTO({
         data: values,
@@ -31,6 +33,7 @@ export const CreateTicketForm = ({ formDef, onCancel, onComplete }) => {
       })
     );
     if (response.status === 'error') {
+      setIsLoading(false);
       try {
         setError(JSON.parse(response.message).errors.join(' '));
       } catch (e) {
@@ -71,14 +74,14 @@ export const CreateTicketForm = ({ formDef, onCancel, onComplete }) => {
               className="me-3"
               variant="primary"
               type="submit"
-              disabled={isSubmitting || isValidating}
+              disabled={isSubmitting || isValidating || isLoading}
             >
               Submit
             </Button>
             <Button
               variant="secondary"
               onClick={onCancel}
-              disabled={isSubmitting || isValidating}
+              disabled={isSubmitting || isValidating || isLoading }
             >
               Cancel
             </Button>
