@@ -4,6 +4,12 @@ include_once("lib/util.php");
 function read_config($name)
 {
   $path = (is_dev() ? "../" : "../../") . "config";
+  if ($_GET['path'] === "/HR") {
+    $filepath = $path . "/HR/" . $name . ".json";
+    if (file_exists($filepath)) {
+      return file_get_contents($filepath);
+    }
+  }
   return file_get_contents($path . "/" . $name . ".json");
 }
 

@@ -51,7 +51,9 @@ export const createTicket = async attrs => {
 
 export const getFieldsConfig = async () => {
   try {
-    const { data } = await api.get(`/get-config.php?type=fields`);
+    const { data } = await api.get(
+      `/get-config.php?type=fields&path=${window.location.pathname}`
+    );
     return data;
   } catch (error) {
     const out = error.response ? error.response.data : error.message;
@@ -62,7 +64,9 @@ export const getFieldsConfig = async () => {
 
 export const getFormsConfig = async () => {
   try {
-    const { data } = await api.get(`/get-config.php?type=forms`);
+    const { data } = await api.get(
+      `/get-config.php?type=forms&path=${window.location.pathname}`
+    );
     return data;
   } catch (error) {
     const out = error.response ? error.response.data : error.message;

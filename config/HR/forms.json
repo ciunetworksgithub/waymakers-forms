@@ -1,0 +1,27 @@
+[
+  {
+    "tile": {
+      "title": "HR Issues",
+      "body": "Issues related to HR stuff and things."
+    },
+    "fields": {
+      "visible": [
+        "companyID",
+        "contactID",
+        "description",
+        "supervisorEmail",
+        "deviceName",
+        "attachments"
+      ],
+      "hidden": {
+        "dueDateTime": 1,
+        "priority": 2,
+        "queueID": 29682833,
+        "source": 16,
+        "status": 1,
+        "ticketCategory": 141,
+        "title": "Application"
+      }
+    }
+  }
+]
