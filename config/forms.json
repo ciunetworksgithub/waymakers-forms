@@ -17,6 +17,7 @@
         },
         "description",
         "supervisorEmail",
+        "contactPhone",
         "deviceName",
         "attachments"
       ],
@@ -42,6 +43,7 @@
         "contactID",
         "description",
         "supervisorEmail",
+        "contactPhone",
         "deviceName",
         "attachments"
       ],
@@ -96,6 +98,7 @@
         "contactID",
         "description",
         "supervisorEmail",
+        "contactPhone",
         "deviceName",
         "attachments"
       ],
@@ -150,6 +153,7 @@
         "contactID",
         "description",
         "supervisorEmail",
+        "contactPhone",
         "deviceName",
         "attachments"
       ],

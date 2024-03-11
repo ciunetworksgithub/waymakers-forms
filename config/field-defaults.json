@@ -18,6 +18,7 @@
   "contactPhone": {
     "label": "Contact Phone",
     "placeholder": "What is a good number to reach you at?",
+    "required": true,
     "appendToDescription": true
   },
   "companyID": {
