@@ -15,7 +15,7 @@ export const CreateTicketForm = ({ formDef, onCancel, onComplete }) => {
     fields: { hidden, visible: visibileFields },
   } = formDef;
   const initialValues = {
-    ...visibileFields.reduce((acc, cur) => ({ [cur]: '', ...acc }), {}),
+    ...visibileFields.reduce((acc, cur) => ({ [cur.name]: '', ...acc }), {}),
     ...hidden,
   };
   const [error, setError] = useState();
@@ -81,7 +81,7 @@ export const CreateTicketForm = ({ formDef, onCancel, onComplete }) => {
             <Button
               variant="secondary"
               onClick={onCancel}
-              disabled={isSubmitting || isValidating || isLoading }
+              disabled={isSubmitting || isValidating || isLoading}
             >
               Cancel
             </Button>

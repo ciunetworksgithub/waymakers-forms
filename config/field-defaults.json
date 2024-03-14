@@ -1,4 +1,21 @@
 {
+  "accessAdditions": {
+    "label": "Additional Access to Include",
+    "placeholder": "",
+    "type": "textarea",
+    "appendToDescription": true
+  },
+  "accessPrinters": {
+    "label": "Local Printer Access Needed",
+    "placeholder": "",
+    "type": "textarea",
+    "appendToDescription": true
+  },
+  "accessTemplate": {
+    "label": "Same Access Rights As",
+    "placeholder": "",
+    "appendToDescription": true
+  },
   "attachments": {
     "label": "Attachments",
     "placeholder": "Upload screenshots or other files",
@@ -46,6 +63,21 @@
       "Waymakers - West Justice Center": 617
     }
   },
+  "employeeLocation": {
+    "label": "Worksite/Location",
+    "placeholder": "",
+    "appendToDescription": true
+  },
+  "employeeName": {
+    "label": "Employee Name",
+    "placeholder": "",
+    "appendToDescription": true
+  },
+  "date": {
+    "label": "Date",
+    "placeholder": "",
+    "appendToDescription": true
+  },
   "description": {
     "label": "Description",
     "placeholder": "Tell us a little about the issue and when you are available to help us fix",
@@ -64,6 +96,11 @@
     "label": "Supervisor Email (Optional)",
     "placeholder": "Enter email address of your supervisor",
     "type": "email",
+    "appendToDescription": true
+  },
+  "time": {
+    "label": "Time",
+    "placeholder": "",
     "appendToDescription": true
   },
   "title": {

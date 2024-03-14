@@ -1,15 +1,23 @@
 [
   {
     "tile": {
-      "title": "HR Issues",
-      "body": "Issues related to HR stuff and things."
+      "title": "Employee Offboard",
+      "body": "Use this form to create an Employee <strong>Offboard</strong> ticket."
     },
     "fields": {
       "visible": [
         "companyID",
         "contactID",
-        "description",
-        "supervisorEmail",
+        "employeeName",
+        "employeeLocation",
+        {
+          "name": "date",
+          "label": "Termination Date"
+        },
+        {
+          "name": "time",
+          "label": "Termination Time"
+        },
         "deviceName",
         "attachments"
       ],
@@ -19,8 +27,94 @@
         "queueID": 29682833,
         "source": 16,
         "status": 1,
-        "ticketCategory": 141,
-        "title": "Application"
+        "ticketCategory": 133,
+        "title": "Employee Offboard | {employeeName} | {date}"
+      }
+    }
+  },
+  {
+    "tile": {
+      "title": "Employee Onboard",
+      "body": "Use this form to create an Employee <strong>Onboard</strong> ticket."
+    },
+    "fields": {
+      "visible": [
+        "companyID",
+        "contactID",
+        "employeeName",
+        "employeeLocation",
+        {
+          "name": "contactPhone",
+          "label": "Employee Phone Number",
+          "placeholder": ""
+        },
+        {
+          "name": "date",
+          "label": "Start Date"
+        },
+        "accessTemplate",
+        "accessAdditions",
+        "deviceName",
+        "accessPrinters",
+        "attachments"
+      ],
+      "hidden": {
+        "dueDateTime": 1,
+        "priority": 2,
+        "queueID": 29682833,
+        "source": 16,
+        "status": 1,
+        "ticketCategory": 123,
+        "title": "Employee Onboard | {employeeName} | {date}"
+      }
+    }
+  },
+  {
+    "tile": {
+      "title": "Employee Transfer",
+      "body": "Use this form to create an Employee <strong>Transfer</strong> ticket."
+    },
+    "fields": {
+      "visible": [
+        "companyID",
+        "contactID",
+        "employeeName",
+        {
+          "name": "date",
+          "label": "Transfer Date"
+        },
+        {
+          "name": "employeeLocation",
+          "label": "Old Worksite/Location"
+        },
+        {
+          "name": "employeeLocationNew",
+          "label": "New Worksite/Location",
+          "appendToDescription": true
+        },
+        {
+          "name": "deviceNameOld",
+          "label": "Old Device Name",
+          "appendToDescription": true
+        },
+        {
+          "name": "deviceNameNew",
+          "label": "New Device Name",
+          "appendToDescription": true
+        },
+        "accessTemplate",
+        "accessAdditions",
+        "accessPrinters",
+        "attachments"
+      ],
+      "hidden": {
+        "dueDateTime": 1,
+        "priority": 2,
+        "queueID": 29682833,
+        "source": 16,
+        "status": 1,
+        "ticketCategory": 133,
+        "title": "Employee Transfer | {employeeName} | {date}"
       }
     }
   }

@@ -17,7 +17,9 @@ export const SelectionTiles = ({ forms, onComplete }) => {
               className="SelectionTiles-Tile"
             >
               <Card.Title className="title">{form.tile.title}</Card.Title>
-              <Card.Body>{form.tile.body}</Card.Body>
+              <Card.Body>
+                <div dangerouslySetInnerHTML={{ __html: form.tile.body }} />
+              </Card.Body>
             </Card>
           </Col>
         ))}
