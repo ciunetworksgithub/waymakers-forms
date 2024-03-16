@@ -18,7 +18,6 @@
           "name": "time",
           "label": "Termination Time"
         },
-        "deviceName",
         "attachments"
       ],
       "hidden": {
@@ -44,9 +43,10 @@
         "employeeName",
         "employeeLocation",
         {
-          "name": "contactPhone",
+          "name": "employeePhone",
           "label": "Employee Phone Number",
-          "placeholder": ""
+          "placeholder": "",
+          "appendToDescription": true
         },
         {
           "name": "date",
@@ -54,8 +54,6 @@
         },
         "accessTemplate",
         "accessAdditions",
-        "deviceName",
-        "accessPrinters",
         "attachments"
       ],
       "hidden": {
@@ -92,19 +90,8 @@
           "label": "New Worksite/Location",
           "appendToDescription": true
         },
-        {
-          "name": "deviceNameOld",
-          "label": "Old Device Name",
-          "appendToDescription": true
-        },
-        {
-          "name": "deviceNameNew",
-          "label": "New Device Name",
-          "appendToDescription": true
-        },
         "accessTemplate",
         "accessAdditions",
-        "accessPrinters",
         "attachments"
       ],
       "hidden": {
