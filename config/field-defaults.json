@@ -22,7 +22,7 @@
     "type": "upload"
   },
   "contactID": {
-    "label": "Contact Email",
+    "label": "Contact Email (your waymakersoc.org email address)",
     "placeholder": "Start typing...",
     "required": true,
     "type": "autosuggest"
