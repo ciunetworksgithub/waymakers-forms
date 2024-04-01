@@ -125,14 +125,6 @@ const CreateCasePage = () => {
             </Col>
             <Col sm={0} md={0} className="invisible"></Col>
           </Row>
-          <Row>
-            <Col className="text-center text-dark-emphasis">
-              <p>
-                Having Trouble Creating a Ticket? Please call CIU Directly at
-                562-795-1700
-              </p>
-            </Col>
-          </Row>
         </Col>
       </Row>
     </Container>
