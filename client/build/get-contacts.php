@@ -6,6 +6,13 @@ include_once("lib/util.php");
 
 try {
   setup_api_get_response();
+
+  if (array_key_exists('refresh', $_GET)) {
+    ContactsCache::clear_all();
+    echo "Contacts refreshed successfully";
+    return;
+  }
+
   // Limit company id length to 10 to prevent any buffer overflow attempts
   $company_id = substr($_GET['company_id'], 0, 10);
   $contacts = ContactsCache::get($company_id);

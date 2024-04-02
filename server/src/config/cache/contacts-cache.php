@@ -6,6 +6,11 @@ class ContactsCache
   private static $key = 'contacts';
   private static $ttl = 10_800;
 
+  public static function clear_all()
+  {
+    (new Cache(self::$key))->clear_all();
+  }
+
   public static function get($companyID)
   {
     return (new Cache(self::$key . '-' . $companyID, self::$ttl))->get();

@@ -2,17 +2,28 @@
 
 class Cache
 {
+  private $key;
   private $file_path;
   private $ttl = 86_400; // one day
 
   public function __construct($key, $ttl = null)
   {
+    $this->key = $key;
     if (!file_exists('cache')) mkdir('cache', 0744);
     $this->file_path = './cache/' . $key . '.json';
 
     if ($ttl) {
       $this->ttl = $ttl;
     }
+  }
+
+  public function clear_all()
+  {
+    if (!file_exists('./cache')) {
+      error_log("cannot clear cache, cache dir doesn't exist");
+      return;
+    }
+    return shell_exec("rm -f ./cache/" . $this->key . '*');
   }
 
   public function get()
