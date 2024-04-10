@@ -1,24 +1,42 @@
+import { useMsal } from '@azure/msal-react';
 import { useEffect, useState } from 'react';
-import { getFieldsConfig, getFormsConfig } from '../helpers';
-import { transformFormsConfig } from '../helpers/transform-forms-config';
+import {
+  getContactsByEmail,
+  getFieldsConfig,
+  getFormsConfig,
+  transformContactsFields,
+  transformFormsConfig,
+} from '../helpers';
 
 export const useFormDefs = () => {
+  const { accounts } = useMsal();
   const [config, setConfig] = useState();
   const [error, setError] = useState();
+  const account = accounts?.[0];
 
   useEffect(() => {
+    if (!account) {
+      return;
+    }
+
     (async () => {
       try {
-        const [fields, forms] = await Promise.all([
+        const [contacts, fields, forms] = await Promise.all([
+          getContactsByEmail(account.username),
           getFieldsConfig(),
           getFormsConfig(),
         ]);
-        setConfig(transformFormsConfig({ fieldDefaults: fields, forms }));
+        setConfig(
+          transformContactsFields({
+            contacts,
+            config: transformFormsConfig({ fieldDefaults: fields, forms }),
+          })
+        );
       } catch (e) {
         setError(e);
       }
     })();
-  }, []);
+  }, [account]);
 
   return {
     config,

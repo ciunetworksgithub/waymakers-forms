@@ -16,6 +16,7 @@ import { useFormDefs } from './hooks/use-form-defs';
 
 import './index.css';
 
+
 const STAGES = {
   TILES: 0,
   FORM: 1,

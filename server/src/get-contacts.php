@@ -15,11 +15,24 @@ try {
 
   // Limit company id length to 10 to prevent any buffer overflow attempts
   $company_id = substr($_GET['company_id'], 0, 10);
-  $contacts = ContactsCache::get($company_id);
-  if (!$contacts) {
-    $contacts = (new AutotaskApiClient())->get_contacts($company_id);
-    ContactsCache::set($company_id, $contacts);
+  if ($company_id) {
+    $contacts = ContactsCache::get($company_id);
+    if (!$contacts) {
+      $contacts = (new AutotaskApiClient())->get_contacts_by_company_id($company_id);
+      ContactsCache::set($company_id, $contacts);
+    }
   }
+
+  // Limit company id length to 10 to prevent any buffer overflow attempts
+  $email = substr($_GET['email'], 0, 50);
+  if ($email) {
+    $contacts = ContactsCache::get($email);
+    if (!$contacts) {
+      $contacts = (new AutotaskApiClient())->get_contacts_by_email($email);
+      ContactsCache::set($email, $contacts);
+    }
+  }
+
   echo ($contacts);
 } catch (Exception $e) {
   handle_api_exception($e);

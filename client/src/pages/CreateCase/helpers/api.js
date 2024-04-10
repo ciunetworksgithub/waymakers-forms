@@ -49,6 +49,30 @@ export const createTicket = async attrs => {
   }
 };
 
+export const getContactsByCompanyId = async companyId => {
+  try {
+    const { data } = await api.get(`/get-contacts.php?company_id=${companyId}`);
+    return data
+      ? data.reduce((acc, cur) => ({ [cur.emailAddress]: cur.id, ...acc }), {})
+      : {};
+  } catch (error) {
+    const out = error.response ? error.response.data : error.message;
+    console.error('API Error > getContactsByCompanyId:', out);
+    return out;
+  }
+};
+
+export const getContactsByEmail = async email => {
+  try {
+    const { data } = await api.get(`/get-contacts.php?email=${email}`);
+    return data;
+  } catch (error) {
+    const out = error.response ? error.response.data : error.message;
+    console.error('API Error > getContactsByEmail:', out);
+    return out;
+  }
+};
+
 export const getFieldsConfig = async () => {
   try {
     const { data } = await api.get(
@@ -71,19 +95,6 @@ export const getFormsConfig = async () => {
   } catch (error) {
     const out = error.response ? error.response.data : error.message;
     console.error('API Error > getFormsConfig:', out);
-    return out;
-  }
-};
-
-export const getContacts = async companyId => {
-  try {
-    const { data } = await api.get(`/get-contacts.php?company_id=${companyId}`);
-    return data
-      ? data.reduce((acc, cur) => ({ [cur.emailAddress]: cur.id, ...acc }), {})
-      : {};
-  } catch (error) {
-    const out = error.response ? error.response.data : error.message;
-    console.error('API Error > getContacts:', out);
     return out;
   }
 };

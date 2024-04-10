@@ -53,9 +53,16 @@ class AutotaskApiClient
     return $items;
   }
 
-  public function get_contacts($company_id)
+  public function get_contacts_by_company_id($company_id)
   {
     $filter = '{"filter":[{"op":"eq","field":"companyID","value":"' . $company_id . '"},{"op":"eq","field":"isActive","value":"1"}]}';
+    $url = '/Contacts/query?search=' . $filter;
+    return json_encode(json_decode($this->request($url))->items);
+  }
+
+  public function  get_contacts_by_email($email)
+  {
+    $filter = '{"filter":[{"op":"eq","field":"emailAddress","value":"' . $email . '"},{"op":"eq","field":"isActive","value":"1"}]}';
     $url = '/Contacts/query?search=' . $filter;
     return json_encode(json_decode($this->request($url))->items);
   }

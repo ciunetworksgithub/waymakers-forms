@@ -1,0 +1,11 @@
+.Authenticated.container {
+  max-width: 720px;
+}
+
+.Authenticated-Authorizing {
+  height: 150px;
+  display: flex ;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

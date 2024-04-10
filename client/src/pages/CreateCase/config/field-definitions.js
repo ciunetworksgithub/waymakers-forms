@@ -1,11 +1,11 @@
 import * as Yup from 'yup';
 
-import { getContacts } from '../helpers';
+import { getContactsByCompanyId } from '../helpers';
 
 const config = {
   contactID: {
     options: {},
-    optionsApi: getContacts,
+    optionsApi: getContactsByCompanyId,
     listensTo: 'companyID',
     schema: Yup.string().required('Required'),
     type: 'autosuggest',

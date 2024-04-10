@@ -6,3 +6,4 @@ configuration-items-*.json
 .env
 node_modules
 settings.php
+tmp/

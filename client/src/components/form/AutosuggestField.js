@@ -34,7 +34,6 @@ export const AutosuggestField = ({
 
   const handleBlur = () => {
     if (!values[name]) {
-      console.log(`[JMG] blur error`);
       setFieldError(name, 'Please select an email from the list');
     }
   };

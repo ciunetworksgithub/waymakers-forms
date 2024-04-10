@@ -1,16 +1,21 @@
+import { MsalProvider } from '@azure/msal-react';
+
 import CreateCasePage from './pages/CreateCase/index.js';
-import { Header } from './components';
+import { Authenticated, Header } from './components';
 
 import './App.css';
 
-function App() {
+function App({ pca }) {
   return (
-    <div className="app">
-      <Header />
-      {/* <div className="app-background--top fixed-top" /> */}
-      <CreateCasePage />
-      <div className="app-background--bottom fixed-bottom" />
-    </div>
+    <MsalProvider instance={pca}>
+      <div className="app">
+        <Header />
+        <Authenticated>
+          <CreateCasePage />
+        </Authenticated>
+        <div className="app-background--bottom fixed-bottom" />
+      </div>
+    </MsalProvider>
   );
 }
 
