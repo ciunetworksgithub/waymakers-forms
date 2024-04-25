@@ -1,3 +1,5 @@
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { MsalProvider } from '@azure/msal-react';
 
 import CreateCasePage from './pages/CreateCase/index.js';

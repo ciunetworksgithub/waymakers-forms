@@ -1,12 +1,13 @@
 import Alert from 'react-bootstrap/Alert';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 
 import {
   AttachmentsModal,
   CreateTicketForm,
+  HelpContact,
   SelectionTiles,
   Success,
 } from './components';
@@ -15,7 +16,6 @@ import { getTicket } from './helpers';
 import { useFormDefs } from './hooks/use-form-defs';
 
 import './index.css';
-
 
 const STAGES = {
   TILES: 0,
@@ -75,6 +75,8 @@ const CreateCasePage = () => {
             <p>{error.stack}</p>
           </Alert>
         </Scene>
+
+        <HelpContact />
       </Container>
     );
   }
@@ -128,6 +130,7 @@ const CreateCasePage = () => {
           </Row>
         </Col>
       </Row>
+      <HelpContact />
     </Container>
   );
 };

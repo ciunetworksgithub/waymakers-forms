@@ -26,11 +26,7 @@ try {
   // Limit company id length to 10 to prevent any buffer overflow attempts
   $email = substr($_GET['email'], 0, 50);
   if ($email) {
-    $contacts = ContactsCache::get($email);
-    if (!$contacts) {
-      $contacts = (new AutotaskApiClient())->get_contacts_by_email($email);
-      ContactsCache::set($email, $contacts);
-    }
+    $contacts = (new AutotaskApiClient())->get_contacts_by_email($email);
   }
 
   echo ($contacts);
