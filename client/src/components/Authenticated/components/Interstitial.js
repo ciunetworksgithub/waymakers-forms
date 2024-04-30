@@ -10,8 +10,8 @@ export const Interstitial = ({ onLogin = () => true }) => {
       <p>
         <Button onClick={onLogin}>Click to Login</Button>
       </p>
-      <p>If you have any trouble logging in, please call CIU directly at:</p>
-      <p>562-795-1700</p>
+      <p>If you have any trouble logging in or need a password reset,</p>
+      <p>please call CIU/Networks directly at: 562-795-1700</p>
     </Container>
   );
 };
